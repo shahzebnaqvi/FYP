@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Components/menu_wiget.dart';
-import 'package:medicalapp/Controllers/HomeDashControllers/home_dash_controller.dart';
 import 'package:medicalapp/Controllers/bottom_bar_controller.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
@@ -17,6 +12,34 @@ import 'package:medicalapp/Views/Home%20Dashboard/bottombar.dart';
 
 final ZoomDrawerController za = ZoomDrawerController();
 
+// class HomeDashboardScreen extends StatelessWidget {
+//   HomeDashboardScreen({super.key});
+//   BottombarController bottomcontroller = Get.put(BottombarController());
+//   var tiles = [
+//     {
+//       'text': "About Us",
+//       'icon': FileConstraints.logo1,
+//       'screen': AppRoutes.loginscreen
+//     },
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return ZoomDrawer(
+//       controller: za,
+//       style: DrawerStyle.defaultStyle,
+//       menuScreen: MenuScreen(),
+//       mainScreen: MainScreen(),
+//       borderRadius: 24.0,
+//       showShadow: true,
+//       angle: -12.0,
+//       drawerShadowsBackgroundColor: Colors.grey[300],
+//       slideWidth: MediaQuery.of(context).size.width*.65,
+//       openCurve: Curves.fastOutSlowIn,
+//       closeCurve: Curves.bounceIn,
+//     );
+//   }
+// }
+
 class HomeDashboardScreen extends StatelessWidget {
   HomeDashboardScreen({Key? key}) : super(key: key);
   BottombarController bottomcontroller = Get.put(BottombarController());
@@ -24,46 +47,6 @@ class HomeDashboardScreen extends StatelessWidget {
   var tiles = [
     {
       'text': "About Us",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Courses",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Program",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Trainings",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Webiners",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Workshop",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Conferences",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Symposiums",
-      'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
-    },
-    {
-      'text': "Other Services",
       'icon': FileConstraints.logo1,
       'screen': AppRoutes.loginscreen
     },
@@ -81,7 +64,7 @@ class HomeDashboardScreen extends StatelessWidget {
       // duration: const Duration(milliseconds: 500),
       duration: const Duration(milliseconds: 100),
       // showShadow: true,
-      // angle: -30.0,
+      angle: -6.0,
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.2),
@@ -90,7 +73,8 @@ class HomeDashboardScreen extends StatelessWidget {
           offset: Offset(0, 3), // changes position of shadow
         ),
       ],
-      angle: 0.0, drawerShadowsBackgroundColor: Colors.grey,
+      // angle: 0.0,
+      drawerShadowsBackgroundColor: Colors.grey,
       moveMenuScreen: false,
       menuScreenWidth: MediaQuery.of(context).size.width,
       menuBackgroundColor: ColorConstraints.primarycolor,
@@ -140,11 +124,6 @@ class HomeDashboardScreen extends StatelessWidget {
                             onTap: () {
                               print(index);
 
-                              // Get.toNamed("${tiles[index]['screen']}");
-                              //   if(){
-                              //        learningControll.currenttab.value = 2;
-                              // value.selectedIndex.value = 4;
-                              //   }
                               print(tiles[index]['screen']);
                             },
                             child: Menubutton(
@@ -154,20 +133,6 @@ class HomeDashboardScreen extends StatelessWidget {
                         ],
                       );
                     }),
-                SizedBox(
-                  height: 60.sp,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    // Get.to(CheckingMenu(
-                    //   title: 'home',
-                    // ));
-                    Get.toNamed(AppRoutes.loginscreen);
-                    za.close!();
-                  },
-                  child: Menubutton(
-                      menutext: "Sign in", menuicon: FileConstraints.logo1),
-                ),
               ],
             ),
           ),
@@ -226,35 +191,35 @@ class HomeScreenBody extends StatelessWidget {
 
             body: bottomcontroller.screenList
                 .elementAt(bottomcontroller.selectedIndex.value),
-            // floatingActionButton: FloatingActionButton(
-            //   backgroundColor: ColorConstraints.primarycolor,
-            //   //Floating action button on Scaffold
-            //   onPressed: () {
-            //     bottomcontroller.onItemTapped(4);
-            //     // print(bottomcontroller.selectedIndex.value);
-            //   },
-            //   child: Container(
-            //     child: Image.asset(FileConstraints.logo), //icon inside button
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: ColorConstraints.primarycolor,
+              //Floating action button on Scaffold
+              onPressed: () {
+                bottomcontroller.onItemTapped(4);
+                // print(bottomcontroller.selectedIndex.value);
+              },
+              child: Container(
+                child: Image.asset(FileConstraints.logo), //icon inside button
 
-            //     decoration: BoxDecoration(
-            //       color: Colors.transparent,
-            //       borderRadius: BorderRadius.all(
-            //         Radius.circular(100),
-            //       ),
-            //       boxShadow: [
-            //         BoxShadow(
-            //           color: ColorConstraints.primarycolor,
-            //           spreadRadius: 7,
-            //           blurRadius: 7,
-            //           offset: Offset(3, 5),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
-            // floatingActionButtonLocation:
-            //     FloatingActionButtonLocation.centerDocked,
-            // bottomNavigationBar: Bottomnavbar(),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(100),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: ColorConstraints.primarycolor,
+                      spreadRadius: 7,
+                      blurRadius: 7,
+                      offset: Offset(3, 5),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerDocked,
+            bottomNavigationBar: Bottomnavbar(),
           )),
     );
   }

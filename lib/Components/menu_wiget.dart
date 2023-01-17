@@ -19,7 +19,7 @@ class Menubutton extends StatelessWidget {
       dense: true,
       // minLeadingWidth: 2,
       // leading: Icon(menuicon),
-      leading: SvgPicture.asset(menuicon),
+      // leading: SvgPicture.asset(menuicon),
       title: Text(
         "$menutext",
         style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400),
