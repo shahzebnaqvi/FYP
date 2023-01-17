@@ -8,10 +8,10 @@ import 'package:medicalapp/Views/Home%20Dashboard/home_screen.dart';
 class BottombarController extends GetxController {
   List<Widget> screenList = [
     HomeScreen(),
-    AuthHomeScreen(),
-    AuthHomeScreen(),
-    AuthHomeScreen(),
-    AuthHomeScreen()
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen(),
+    HomeScreen()
   ];
 
   var selectedIndex = 0.obs;

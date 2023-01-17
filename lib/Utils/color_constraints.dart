@@ -24,5 +24,6 @@ class ColorConstraints {
   static Color menubuttonback = Color(0xffF1F6F4);
   static Color tilevideolistcol = Color(0XffF6F5F5);
   static Color revbackcolor = Color(0xffF5F5F5);
-  static Color recbackcolor = Color(0xffD9D9D9);
+
+  static Color red = Color.fromARGB(255, 184, 28, 23);
 }

@@ -22,18 +22,18 @@ List<Widget> _list = <Widget>[
   PagesOnboard(
       backbool: false,
       titletext: "Welcome To\nSehatgah",
-      imagename: "${FileConstraints.logo1}",
+      imagename: "${FileConstraints.oboard1}",
       paratext:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"),
   new PagesOnboard(
       backbool: true,
       titletext: "OnTap Doctor ",
-      imagename: "${FileConstraints.logo1}",
+      imagename: "${FileConstraints.oboard2}",
       paratext: "Lorem ipsum dolor sit amet"),
   new PagesOnboard(
       backbool: true,
       titletext: "Ready to Medicate?",
-      imagename: "${FileConstraints.logo1}",
+      imagename: "${FileConstraints.oboard3}",
       paratext: 'Get the Advice on your finger tips'),
 ];
 
@@ -152,9 +152,9 @@ class _PagesOnboardState extends State<PagesOnboard> {
       child: Column(children: [
         Stack(
           children: [
-            Image.asset(
+            SvgPicture.asset(
               "${widget.imagename}",
-              width: MediaQuery.of(context).size.width,
+              height: 400.sp,
             ),
             Padding(
               padding: EdgeInsets.only(left: 20.0.w, right: 30.w, top: 60.h),
@@ -185,7 +185,7 @@ class _PagesOnboardState extends State<PagesOnboard> {
                       "Skip",
                       style: TextStyle(
                           decoration: TextDecoration.underline,
-                          color: ColorConstraints.white,
+                          color: ColorConstraints.secondarycolor,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w400),
                     ),

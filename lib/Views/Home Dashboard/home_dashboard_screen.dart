@@ -157,7 +157,10 @@ class HomeScreenBody extends StatelessWidget {
                 : AppBar(
                     backgroundColor: Colors.transparent,
                     centerTitle: true,
-                    title: Image.asset(FileConstraints.logo1),
+                    title: Image.asset(
+                      FileConstraints.logo2s,
+                      width: 80,
+                    ),
                     elevation: 0.0,
                     actions: [
                       GestureDetector(
@@ -179,7 +182,10 @@ class HomeScreenBody extends StatelessWidget {
                       )
                     ],
                     leading: IconButton(
-                      icon: Image.asset(FileConstraints.logo1),
+                      icon: Icon(
+                        Icons.menu,
+                        color: ColorConstraints.primarycolor,
+                      ),
                       onPressed: () {
                         // print(za.toggle);
                         za.toggle!();

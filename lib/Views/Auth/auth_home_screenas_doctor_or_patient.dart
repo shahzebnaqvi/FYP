@@ -64,11 +64,8 @@ class DoctorOrPatient extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 100.sp,
-                width: MediaQuery.of(context).size.width,
-              ),
               Image.asset(FileConstraints.logo1),
+
               // Image(
               //   image: AssetImage(FileConstraints.logo),
               // ),

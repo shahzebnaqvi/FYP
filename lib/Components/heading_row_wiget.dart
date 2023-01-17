@@ -40,3 +40,29 @@ class HeadingRow extends StatelessWidget {
     );
   }
 }
+
+class HeadingRowhead extends StatelessWidget {
+  final headingtext;
+
+  const HeadingRowhead({super.key, required this.headingtext});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(top: 10.sp, bottom: 10.sp),
+      width: MediaQuery.of(context).size.width * 0.9,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            "${headingtext}",
+            style: TextStyle(
+                color: ColorConstraints.blackcolor,
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w700),
+          ),
+        ],
+      ),
+    );
+  }
+}

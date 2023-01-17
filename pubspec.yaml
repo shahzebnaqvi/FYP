@@ -41,6 +41,11 @@ dependencies:
   flutter_svg: ^1.1.6
   animation_wrappers: ^3.0.0
   flutter_zoom_drawer: ^3.0.3
+  chewie: ^1.3.6
+  video_player: ^2.4.10
+  file_picker: ^5.2.5
+  syncfusion_flutter_charts: ^20.4.43
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
