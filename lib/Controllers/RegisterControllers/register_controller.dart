@@ -8,7 +8,9 @@ class RegisterController extends GetxController with MainController {
   TextEditingController rlname = TextEditingController();
   TextEditingController remail = TextEditingController();
   TextEditingController rcemail = TextEditingController();
-  TextEditingController rphone = TextEditingController();
+  TextEditingController rpassword = TextEditingController();
+  var hidepass = true.obs;
+
   var checkboxval = false.obs;
 
   checkboxvalupdate() {
@@ -19,5 +21,15 @@ class RegisterController extends GetxController with MainController {
     }
     update();
     print(checkboxval);
+  }
+
+  hidenshowpass() {
+    if (hidepass.value) {
+      hidepass.value = false;
+    } else {
+      hidepass.value = true;
+    }
+    update();
+    print(hidepass);
   }
 }

@@ -74,22 +74,19 @@ class RegisterScreen extends StatelessWidget {
                       controllertextfield: registerController.remail,
                       hinttextfield: "Enter your email"),
                   LabelWidget(
-                    labeltext: "Confirm Email*",
+                    labeltext: "Password*",
                   ),
-                  TextFieldWidget(
-                      validationfunction: (validate_value) =>
-                          registerController.validateEmail(validate_value),
-                      controllertextfield: registerController.rcemail,
-                      hinttextfield: "Enter your email"),
+                  Obx(
+                    () => TextFieldWidgetobs(
+                        validationfunction: (validate_value) =>
+                            registerController.validateNull(validate_value),
+                        controllertextfield: registerController.rpassword,
+                        hinttextfield: "Enter your Password",
+                        isHidden: registerController.hidepass.value,
+                        togglePasswordView: registerController.hidenshowpass),
+                  ),
                   SizedBox(
                     height: 10.h,
-                  ),
-                  ParaWidgetunderlinebold(
-                    paratext:
-                        "For international numbers, please make sure you are contactable on the number you have provided",
-                  ),
-                  LabelWidget(
-                    labeltext: "Phone Number*",
                   ),
                   Obx(
                     () => CheckboxListTile(

@@ -77,6 +77,7 @@ class AuthHomeScreen extends StatelessWidget {
                 ontapaction: () {
                   Get.toNamed(
                     AppRoutes.loginscreen,
+                    arguments: {"type": typeargu[0]['type']},
                   );
                 },
                 buttontext: "Sign in"),
@@ -84,6 +85,7 @@ class AuthHomeScreen extends StatelessWidget {
                 ontapaction: () {
                   Get.toNamed(
                     AppRoutes.registerscreen,
+                    arguments: {"type": typeargu[0]['type']},
                   );
                 },
                 buttontext: "Register"),
