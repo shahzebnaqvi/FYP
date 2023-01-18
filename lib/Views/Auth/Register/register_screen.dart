@@ -114,9 +114,13 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   Custombuttonbacknopad(
                       ontapaction: () {
-                        if (registerForm.currentState!.validate()) {}
+                        if (registerForm.currentState!.validate()) {
+                          registerController.signupfunction(
+                              registerController.remail.text,
+                              registerController.rpassword.text);
+                        }
                       },
-                      buttontext: "Next"),
+                      buttontext: "Register"),
                   SizedBox(
                     height: 30.h,
                   ),
