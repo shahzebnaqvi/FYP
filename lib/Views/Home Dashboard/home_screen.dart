@@ -12,6 +12,7 @@ import 'package:medicalapp/Components/textfield_widget.dart';
 import 'package:medicalapp/Controllers/HomeDashControllers/home_controller.dart';
 import 'package:medicalapp/Controllers/bottom_bar_controller.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
+import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
 
@@ -42,13 +43,13 @@ class HomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 PredictionButton(
-                    imagelink: "assets/images/microscope.png",
+                    imagelink: FileConstraints.neoanalysis,
                     heading: "Neo Analysis",
                     OnTapbutton: () {
                       Get.to(() => NeoAnalysis());
                     }),
                 PredictionButton(
-                    imagelink: "assets/images/microscope.png",
+                    imagelink: FileConstraints.videovital,
                     heading: "Video Vitals",
                     OnTapbutton: () {
                       Get.to(() => VideoVitalScreen());

@@ -57,7 +57,7 @@ class HeadingRowhead extends StatelessWidget {
           Text(
             "${headingtext}",
             style: TextStyle(
-                color: ColorConstraints.blackcolor,
+                color: ColorConstraints.secondarycolor,
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w700),
           ),

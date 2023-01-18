@@ -11,4 +11,6 @@ class FileConstraints {
   static String oboard2 = "assets/images/onboard2.svg";
   static String oboard3 = "assets/images/onboard3.svg";
   static String oboard4 = "assets/images/onboard4.svg";
+  static String videovital = "assets/images/Video-Call.png";
+  static String neoanalysis = "assets/images/microscope.png";
 }
