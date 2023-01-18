@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1036722190154",
+    "project_id": "sehatgah-e3a20",
+    "storage_bucket": "sehatgah-e3a20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036722190154:android:1711559c43a09757a973b3",
+        "android_client_info": {
+          "package_name": "com.example.medicalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036722190154-iml047rp0u9ufc71c3quroc0d67kr95h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlZ4ZmCw6chfGFCXboTwhIj936xPkaOPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036722190154-iml047rp0u9ufc71c3quroc0d67kr95h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
