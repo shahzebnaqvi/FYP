@@ -33,6 +33,31 @@ class Custombuttonback extends StatelessWidget {
   }
 }
 
+class Custombuttonbackloading extends StatelessWidget {
+  const Custombuttonbackloading({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin:
+          EdgeInsets.only(left: 20.sp, right: 20.sp, top: 5.sp, bottom: 10.sp),
+      width: MediaQuery.of(context).size.width,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          padding: EdgeInsets.all(8.sp),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.sp),
+          ),
+        ),
+        child: CircularProgressIndicator(
+          color: Colors.white,
+        ),
+        onPressed: () {},
+      ),
+    );
+  }
+}
+
 class Custombuttontrans extends StatelessWidget {
   final ontapaction;
   final buttontext;

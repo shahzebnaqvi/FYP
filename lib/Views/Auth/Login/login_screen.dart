@@ -16,102 +16,107 @@ class LoginScreen extends StatelessWidget {
   LoginController logincontroller = Get.put(LoginController());
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: GestureDetector(
-            onTap: () {
-              logincontroller.backpage();
-              // print("object");
-              // Get.back();
-            },
-            child: Icon(
-              Icons.arrow_back_ios,
-              color: ColorConstraints.blackcolor,
-            ),
-          ),
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Column(
-              children: [
-                Center(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    child: HeadingWidget1(
-                      headingtext: "Sign in to your account",
-                    ),
+    return GetBuilder(
+        init: logincontroller,
+        builder: (contextb) {
+          return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                leading: GestureDetector(
+                  onTap: () {
+                    logincontroller.backpage();
+                    // print("object");
+                    // Get.back();
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    color: ColorConstraints.blackcolor,
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(
-                      top: 10.sp, bottom: 20.sp, right: 4.sp, left: 4.sp),
-                  decoration: BoxDecoration(
-                      color: ColorConstraints.white,
-                      borderRadius: BorderRadius.all(Radius.circular(20))),
-                  width: 61.sp,
-                  height: 2.sp,
-                )
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                  color: ColorConstraints.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.sp),
-                      topRight: Radius.circular(20.sp))),
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: Column(children: [
-                    EmailComponent(form: formKeyEmail),
-                  ]),
-                ),
               ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Custombuttonback(
-                ontapaction: () {
-                  if (formKeyEmail.currentState!.validate()) {
-                    // If the form is valid, display a snackbar. In the real world,
-                    // you'd often call a server or save the information in a database.
-                    logincontroller.underprogess();
-                  }
-                  // Get.toNamed(
-                  //   AppRoutes.onboarding,
-                  // );
-                },
-                buttontext: "Sign in"),
-            SizedBox(
-              height: 5.h,
-            ),
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  logincontroller.forgotpass();
-                },
-                child: Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      color: ColorConstraints.secondarycolor,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600),
-                ),
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Center(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          child: HeadingWidget1(
+                            headingtext: "Sign in to your account",
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: 10.sp, bottom: 20.sp, right: 4.sp, left: 4.sp),
+                        decoration: BoxDecoration(
+                            color: ColorConstraints.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        width: 61.sp,
+                        height: 2.sp,
+                      )
+                    ],
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: ColorConstraints.white,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(20.sp),
+                            topRight: Radius.circular(20.sp))),
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Column(children: [
+                          EmailComponent(form: formKeyEmail),
+                        ]),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ),
-            SizedBox(
-              height: 40.h,
-            ),
-          ],
-        ));
+              bottomNavigationBar: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  logincontroller.loading == false
+                      ? Custombuttonback(
+                          ontapaction: () {
+                            if (formKeyEmail.currentState!.validate()) {
+                              // logincontroller.underprogess();
+                              logincontroller.loginuser(
+                                  logincontroller.semail.text,
+                                  logincontroller.spassword.text);
+                            }
+                          },
+                          buttontext: "Sign in")
+                      : Custombuttonbackloading(),
+                  SizedBox(
+                    height: 5.h,
+                  ),
+                  Center(
+                    child: GestureDetector(
+                      onTap: () {
+                        logincontroller.forgotpass();
+                      },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: ColorConstraints.secondarycolor,
+                            fontSize: 16.sp,
+                            fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40.h,
+                  ),
+                ],
+              ));
+        });
   }
 }
 

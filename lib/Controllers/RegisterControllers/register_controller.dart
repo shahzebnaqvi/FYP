@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:medicalapp/Helper/storage_helper.dart';
 
 class RegisterController extends GetxController with MainController {
   TextEditingController rfname = TextEditingController();
@@ -12,7 +14,16 @@ class RegisterController extends GetxController with MainController {
   TextEditingController remail = TextEditingController();
   TextEditingController rcemail = TextEditingController();
   TextEditingController rpassword = TextEditingController();
+  var fielddoctor = 'Select'.obs;
+  var loading = false;
+
+  changefielddoctor(value) {
+    // print("object");
+    fielddoctor.value = value;
+  }
+
   var hidepass = true.obs;
+  var results;
 
   var checkboxval = false.obs;
 
@@ -26,6 +37,11 @@ class RegisterController extends GetxController with MainController {
     print(checkboxval);
   }
 
+  updateimg(resu) {
+    results = resu;
+    update();
+  }
+
   hidenshowpass() {
     if (hidepass.value) {
       hidepass.value = false;
@@ -36,7 +52,13 @@ class RegisterController extends GetxController with MainController {
     print(hidepass);
   }
 
-  signupfunction(emailAddress, password) async {
+  signupfunction(emailAddress, password, name, results, type, field) async {
+    loading = true;
+
+    Storage storageobj = Storage();
+    var filename = results.files.single.name;
+    var pathname = results.files.single.path;
+    storageobj.uploadFile(pathname, emailAddress, filename);
     if (emailAddress == '' || password == '') {
       Get.snackbar('Account Created', 'Fill The fields');
     } else {
@@ -46,6 +68,15 @@ class RegisterController extends GetxController with MainController {
           email: emailAddress,
           password: password,
         );
+
+        await FirebaseFirestore.instance.collection("user_detail").add({
+          'type': type,
+          'field': field,
+          'email': emailAddress,
+          'username': password,
+          'password': password,
+          'profile': "profile/" + emailAddress + "/" + results.files.single.name
+        });
         remail.clear();
         rpassword.clear();
         Get.snackbar('Account Created', 'Account Created');
@@ -65,5 +96,52 @@ class RegisterController extends GetxController with MainController {
         print(e);
       }
     }
+    loading = false;
+  }
+
+  signupfunctionPatient(emailAddress, password, name, results, type) async {
+    loading = true;
+
+    Storage storageobj = Storage();
+    var filename = results.files.single.name;
+    var pathname = results.files.single.path;
+    storageobj.uploadFile(pathname, emailAddress, filename);
+    if (emailAddress == '' || password == '') {
+      Get.snackbar('Account Created', 'Fill The fields');
+    } else {
+      try {
+        final credential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailAddress,
+          password: password,
+        );
+
+        await FirebaseFirestore.instance.collection("user_detail").add({
+          'type': type,
+          'email': emailAddress,
+          'username': password,
+          'password': password,
+          'profile': "profile/" + emailAddress + "/" + results.files.single.name
+        });
+        remail.clear();
+        rpassword.clear();
+        Get.snackbar('Account Created', 'Account Created');
+
+        // Navigator.of(context)
+        //     .push(MaterialPageRoute(builder: (context) => Login()));
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'weak-password') {
+          Get.snackbar('Error', 'The password provided is too weak.');
+          print('The password provided is too weak.');
+        } else if (e.code == 'email-already-in-use') {
+          Get.snackbar('Error', 'The account already exists for that email.');
+
+          print('The account already exists for that email.');
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+    loading = false;
   }
 }
