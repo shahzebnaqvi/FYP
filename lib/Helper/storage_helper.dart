@@ -3,11 +3,13 @@ import 'dart:io';
 
 class Storage {
   final FirebaseStorage storage = FirebaseStorage.instance;
-  Future<void> uploadFile(
-      String filepath, String folder, String filename) async {
+  Future uploadFile(String filepath, String folder, String filename) async {
     File file = File(filepath);
     try {
-      await storage.ref('profile/$folder/$filename').putFile(file);
+      var uploadimage = storage.ref().child('profiledoctor/$folder/$filename');
+      await uploadimage.putFile(file);
+      String url = (await uploadimage.getDownloadURL()).toString();
+      return url;
     } on FirebaseException catch (e) {
       print(e);
     }

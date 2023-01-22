@@ -68,14 +68,18 @@ class RegisterController extends GetxController with MainController {
           email: emailAddress,
           password: password,
         );
-
-        await FirebaseFirestore.instance.collection("user_detail").add({
-          'type': type,
-          'field': field,
-          'email': emailAddress,
-          'username': password,
-          'password': password,
-          'profile': "profile/" + emailAddress + "/" + results.files.single.name
+        var url = storageobj
+            .uploadFile(pathname, emailAddress, filename)
+            .then((value1) async {
+          await FirebaseFirestore.instance.collection("user_detail").add({
+            'type': type,
+            'field': field,
+            'email': emailAddress,
+            'username': password,
+            'password': password,
+            'profile': value1
+            // "profile/" + emailAddress + "/" + results.files.single.name
+          });
         });
         remail.clear();
         rpassword.clear();
@@ -102,10 +106,7 @@ class RegisterController extends GetxController with MainController {
   signupfunctionPatient(emailAddress, password, name, results, type) async {
     loading = true;
 
-    Storage storageobj = Storage();
-    var filename = results.files.single.name;
-    var pathname = results.files.single.path;
-    storageobj.uploadFile(pathname, emailAddress, filename);
+    // storageobj.uploadFile(pathname, emailAddress, filename);
     if (emailAddress == '' || password == '') {
       Get.snackbar('Account Created', 'Fill The fields');
     } else {
@@ -115,17 +116,24 @@ class RegisterController extends GetxController with MainController {
           email: emailAddress,
           password: password,
         );
-
-        await FirebaseFirestore.instance.collection("user_detail").add({
-          'type': type,
-          'email': emailAddress,
-          'username': password,
-          'password': password,
-          'profile': "profile/" + emailAddress + "/" + results.files.single.name
+        Storage storageobj = Storage();
+        var filename = results.files.single.name;
+        var pathname = results.files.single.path;
+        var url = storageobj
+            .uploadFile(pathname, emailAddress, filename)
+            .then((value1) async {
+          await FirebaseFirestore.instance.collection("user_detail").add({
+            'type': type,
+            'email': emailAddress,
+            'username': password,
+            'password': password,
+            'profile': value1,
+            // "profile/" + emailAddress + "/" + results.files.single.name
+          });
+          remail.clear();
+          rpassword.clear();
+          Get.snackbar('Account Created', 'Account Created');
         });
-        remail.clear();
-        rpassword.clear();
-        Get.snackbar('Account Created', 'Account Created');
 
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (context) => Login()));

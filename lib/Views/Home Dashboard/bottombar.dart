@@ -59,13 +59,13 @@ class Bottomnavbar extends StatelessWidget {
                       ? Padding(
                           padding: EdgeInsets.only(right: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.home,
+                              filename: Icons.document_scanner_rounded,
                               colorname: ColorConstraints.menubuttonback),
                         )
                       : Padding(
                           padding: EdgeInsets.only(right: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.home,
+                              filename: Icons.document_scanner_rounded,
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
@@ -76,13 +76,13 @@ class Bottomnavbar extends StatelessWidget {
                       ? Padding(
                           padding: EdgeInsets.only(left: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.home,
+                              filename: Icons.call,
                               colorname: ColorConstraints.menubuttonback),
                         )
                       : Padding(
                           padding: EdgeInsets.only(left: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.home,
+                              filename: Icons.call,
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
@@ -91,10 +91,10 @@ class Bottomnavbar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: bottomcontroller.selectedIndex.value == 3
                       ? Buttonbackcolor(
-                          filename: Icons.home,
+                          filename: Icons.person,
                           colorname: ColorConstraints.menubuttonback)
                       : Buttonbackcolor(
-                          filename: Icons.home,
+                          filename: Icons.person,
                           colorname: ColorConstraints.white.withOpacity(0.2)),
                   // icon: Icon(FontAwesomeIcons.user),
                   label: 'Profile',
