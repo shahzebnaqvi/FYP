@@ -72,7 +72,7 @@ class HomeScreen extends StatelessWidget {
                 stream: FirebaseFirestore.instance
                     .collection('user_detail')
                     // .where("gender",)
-                    .where('gender', isEqualTo: 'Doctor')
+                    .where('type', isEqualTo: 'Doctor')
 
                     // .orderBy('datecreation', descending: true)
                     .snapshots(),
