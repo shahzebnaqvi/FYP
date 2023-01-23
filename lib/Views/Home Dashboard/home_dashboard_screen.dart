@@ -46,11 +46,48 @@ class HomeDashboardScreen extends StatelessWidget {
 
   var tiles = [
     {
-      'text': "About Us",
+      'text': "Neo Analysis",
       'icon': FileConstraints.logo1,
-      'screen': AppRoutes.loginscreen
+      'screen': Icons.analytics
+    },
+    {
+      'text': "Video Vital",
+      'icon': FileConstraints.logo1,
+      'screen': Icons.video_call
+    },
+    {
+      'text': "BMI Calculator",
+      'icon': FileConstraints.logo1,
+      'screen': Icons.calculate
+    },
+    {
+      'text': "BP Record",
+      'icon': FileConstraints.logo1,
+      'screen': Icons.bug_report
+    },
+    {
+      'text': "Doctor",
+      'icon': FileConstraints.logo1,
+      'screen': Icons.domain_verification_rounded
     },
   ];
+  //   {
+  //   'text': "Neo Analysis",
+  //   'icon': FileConstraints.logo1,
+  //   'screen': NeoAnalysis()
+  // },
+  // {
+  //   'text': "Video Vital",
+  //   'icon': FileConstraints.logo1,
+  //   'screen': VideoVitalScreen()
+  // },
+  // {'text': "BMI Calculator", 'icon': FileConstraints.logo1, 'screen': Bmi()},
+  // {'text': "BP Record", 'icon': FileConstraints.logo1, 'screen': BP()},
+  // {
+  //   'text': "Doctors",
+  //   'icon': FileConstraints.logo1,
+  //   'screen': HomeDashboardScreen()
+  // },
   @override
   Widget build(BuildContext context) {
     return ZoomDrawer(
@@ -123,7 +160,7 @@ class HomeDashboardScreen extends StatelessWidget {
                           GestureDetector(
                             onTap: () {
                               print(index);
-
+                              Get.toNamed('${tiles[index]['screen']}');
                               print(tiles[index]['screen']);
                             },
                             child: Menubutton(
@@ -205,7 +242,7 @@ class HomeScreenBody extends StatelessWidget {
                 // print(bottomcontroller.selectedIndex.value);
               },
               child: Container(
-                child: Image.asset(FileConstraints.logo), //icon inside button
+                child: Icon(Icons.medical_information), //icon inside button
 
                 decoration: BoxDecoration(
                   color: Colors.transparent,

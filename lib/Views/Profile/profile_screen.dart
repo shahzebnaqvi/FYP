@@ -47,52 +47,201 @@ class ProfileScreen extends StatelessWidget {
         },
         child: SingleChildScrollView(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 30.h,
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    left: MediaQuery.of(context).size.width * 0.05),
+              Container(
+                padding:
+                    EdgeInsets.only(right: 30, left: 30, top: 30, bottom: 30),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Textcomponent1(
-                      textcomp: "Help and Support",
+                    Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                              height: 65,
+                            ),
+                            CircleAvatar(
+                              backgroundImage:
+                                  AssetImage("assets/images/profile.png"),
+                              radius: 50,
+                            ),
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              left: 0,
+                              child: CircleAvatar(
+                                backgroundColor: ColorConstraints.primarycolor,
+                                radius: 15,
+                                child: Icon(
+                                  Icons.edit,
+                                  size: 10,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Shunaid Shafiq",
+                            style:
+                                TextStyle(color: ColorConstraints.primarycolor),
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      width: 50,
+                    ),
+                    ElevatedButton(
+                      style: OutlinedButton.styleFrom(
+                          shape: StadiumBorder(),
+                          side: BorderSide(
+                            color: ColorConstraints.primarycolor,
+                            width: 2.0,
+                          ),
+                          backgroundColor: Colors.transparent),
+                      onPressed: () {
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //       builder: (context) => const EditProfile()),
+                        // );
+                      },
+                      child: Text("Edit"),
                     ),
                   ],
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  profileControll.underprogess();
-                },
-                child: ListTileCompPage(listtiletitle: "About Sehatgah   "),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          Text(
+                            "Gender",
+                            style:
+                                TextStyle(color: ColorConstraints.primarycolor),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Text(
+                              "Male",
+                              style: TextStyle(
+                                  color: ColorConstraints.primarycolor,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(right: 25, left: 25),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            right: BorderSide(
+                                width: 1.0,
+                                color: ColorConstraints.primarycolor),
+                            left: BorderSide(
+                                width: 1.0,
+                                color: ColorConstraints.primarycolor),
+                          ),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Age",
+                              style: TextStyle(
+                                  color: ColorConstraints.primarycolor),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 4.0),
+                              child: Text(
+                                "24",
+                                style: TextStyle(
+                                    color: ColorConstraints.primarycolor,
+                                    fontSize: 18),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            "Location",
+                            style:
+                                TextStyle(color: ColorConstraints.primarycolor),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 4.0),
+                            child: Text(
+                              "NY, USA",
+                              style: TextStyle(
+                                  color: ColorConstraints.primarycolor,
+                                  fontSize: 18),
+                            ),
+                          ),
+                        ],
+                      )
+                    ]),
               ),
-              GestureDetector(
-                  onTap: () {
-                    profileControll.underprogess();
-                  },
-                  child: ListTileCompPage(
-                      listtiletitle: "Frequently Asked Question")),
-              GestureDetector(
-                  onTap: () {
-                    profileControll.underprogess();
-                  },
-                  child: ListTileCompPage(listtiletitle: "Share the App")),
-              SizedBox(
-                height: 40.h,
-              ),
-              GestureDetector(
-                onTap: () {
-                  Get.to(AuthHomeScreen());
-                },
-                child: Textcomponent3(
-                  textcomp: "Sign in",
+              Container(
+                margin:
+                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.07),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  // color: primaryColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(16.0),
+                  ),
+                  border: Border.all(
+                      width: 2,
+                      color: ColorConstraints
+                          .primarycolor //                   <--- border width here
+                      ),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image(
+                      image: AssetImage(
+                        "assets/images/Devices.png",
+                      ),
+                      // width: 80,
+                    ),
+                    Text(
+                      "Connect a Device",
+                      style: TextStyle(color: ColorConstraints.primarycolor),
+                    ),
+                    Icon(
+                      Icons.bluetooth,
+                      color: ColorConstraints.primarycolor,
+                    ),
+                  ],
                 ),
               ),
-              Textcomponent2(
-                textcomp: "Sehatgah",
+              optionprofile("assets/images/line-graph.png", "Latest Graphs"),
+              SizedBox(
+                height: 8,
+              ),
+              optionprofile("assets/images/reports.png", "My Reports"),
+              SizedBox(
+                height: 8,
+              ),
+              optionprofile("assets/images/Camera-Video.png", "My Videos"),
+              SizedBox(
+                height: 8,
+              ),
+              optionprofile("assets/images/Image-Upload.png", "My Photos"),
+              SizedBox(
+                height: 8,
+              ),
+              optionprofile("assets/images/mic.png", "My Audios"),
+              SizedBox(
+                height: 8,
               ),
             ],
           ),
@@ -100,4 +249,24 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget optionprofile(img, heading) {
+  return ListTile(
+    trailing: Icon(
+      Icons.arrow_forward_ios_rounded,
+      color: ColorConstraints.primarycolor,
+    ),
+    leading: Image(
+      image: AssetImage(
+        img,
+      ),
+      // width: 80,
+    ),
+    title: Text(
+      heading,
+      style: TextStyle(color: ColorConstraints.primarycolor),
+    ),
+    tileColor: ColorConstraints.primarycolor.withOpacity(0.3),
+  );
 }
