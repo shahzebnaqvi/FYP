@@ -17,6 +17,8 @@ import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
+import 'package:medicalapp/Views/Additionaltools/bmi.dart';
+import 'package:medicalapp/Views/Additionaltools/bp.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -25,6 +27,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var Additionaltitle = [
+      "BMI",
+      "BP",
+    ];
+    var Additionalicon = [
+      Icons.medical_services,
+      Icons.bloodtype,
+    ];
+
+    var Additionalnav = [Bmi(), BP()];
+
     return SingleChildScrollView(
         child: Center(
       child: Column(
@@ -67,13 +80,12 @@ class HomeScreen extends StatelessWidget {
             headingtext: "Doctors",
           ),
           Container(
-            height: 300,
+            height: 215.sp,
             child: StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection('user_detail')
                     // .where("gender",)
                     .where('type', isEqualTo: 'Doctor')
-
                     // .orderBy('datecreation', descending: true)
                     .snapshots(),
                 builder: (BuildContext context,
@@ -92,8 +104,11 @@ class HomeScreen extends StatelessWidget {
                           document.data()! as Map<String, dynamic>;
                       return InkWell(
                         onTap: () {},
-                        child: cardcourse(context, "${data['user_detail']}",
-                            'Bill', '${data['profile']}'),
+                        child: DoctorWidget(
+                            imagelink: '${data['profile']}',
+                            doctname: '${data['username']}',
+                            doctcat: '${data['field']}',
+                            OnTapbutton: () {}),
                       );
                     }).toList(),
                   );
@@ -102,8 +117,28 @@ class HomeScreen extends StatelessWidget {
           HeadingRowhead(
             headingtext: "Other Tools",
           ),
-          HeadingRowhead(
-            headingtext: "Mediciness",
+          GridView.builder(
+            physics: NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: Additionaltitle.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisExtent: MediaQuery.of(context).size.width * 0.3,
+                crossAxisCount: 4),
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Additionalnav[index]),
+                  );
+                },
+                child: Container(
+                    margin: EdgeInsets.all(2),
+                    child: containericonsmall(context, Additionalicon[index],
+                        Additionaltitle[index], Colors.white)),
+              );
+            },
           ),
         ],
       ),
@@ -149,4 +184,126 @@ class PredictionButton extends StatelessWidget {
       ),
     );
   }
+}
+
+class DoctorWidget extends StatelessWidget {
+  final imagelink;
+  final doctname;
+  final doctcat;
+  final OnTapbutton;
+  const DoctorWidget(
+      {super.key,
+      required this.imagelink,
+      required this.doctname,
+      required this.doctcat,
+      required this.OnTapbutton});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      Container(
+        margin: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.09,
+          bottom: MediaQuery.of(context).size.height * 0.020,
+          left: MediaQuery.of(context).size.width * 0.050,
+          right: MediaQuery.of(context).size.width * 0.050,
+        ),
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.060,
+          left: MediaQuery.of(context).size.width * 0.040,
+          bottom: MediaQuery.of(context).size.height * 0.030,
+          right: MediaQuery.of(context).size.width * 0.020,
+        ),
+        width: MediaQuery.of(context).size.width * 0.6,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(width: 0, color: Colors.white),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 5,
+              blurRadius: 10,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Dr $doctname",
+                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold)),
+            Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 12.0),
+              child: Text(doctcat,
+                  style:
+                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
+      ),
+      Positioned(
+          left: 30.sp,
+          top: 10.sp,
+          child: CircleAvatar(
+            radius: 50.sp,
+            backgroundImage: NetworkImage(imagelink),
+          )),
+      Positioned(
+          right: 40.sp,
+          top: 90.sp,
+          child: Icon(
+            Icons.message,
+            color: ColorConstraints.secondarycolor,
+          ))
+    ]);
+  }
+}
+
+Widget containericonsmall(context, iconname, icontext, backgroundcolor) {
+  return Container(
+    padding: EdgeInsets.only(
+        top: MediaQuery.of(context).size.width * 0.04,
+        left: MediaQuery.of(context).size.width * 0.03,
+        bottom: MediaQuery.of(context).size.width * 0.01,
+        right: MediaQuery.of(context).size.width * 0.03),
+    margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.005),
+    decoration: BoxDecoration(
+      color: backgroundcolor,
+      borderRadius: BorderRadius.all(
+          Radius.circular(MediaQuery.of(context).size.width * 0.03)),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.2),
+          spreadRadius: 1,
+          blurRadius: 2,
+          offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    ),
+    // width: MediaQuery.of(context).size.width * 0.45,
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          iconname,
+          size: MediaQuery.of(context).size.width * 0.1,
+          color: ColorConstraints.primarycolor,
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            top: MediaQuery.of(context).size.width * 0.04,
+          ),
+          child: Text(
+            icontext,
+            style: TextStyle(
+                color: ColorConstraints.primarycolor,
+                fontSize: MediaQuery.of(context).size.width * 0.03),
+            textAlign: TextAlign.center,
+          ),
+        )
+      ],
+    ),
+  );
 }
