@@ -152,7 +152,7 @@ class _PagesOnboardState extends State<PagesOnboard> {
       child: Column(children: [
         Stack(
           children: [
-            SvgPicture.asset(
+            Image.asset(
               "${widget.imagename}",
               height: 400.sp,
             ),
