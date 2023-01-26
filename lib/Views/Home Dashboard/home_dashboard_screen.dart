@@ -189,47 +189,49 @@ class HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       (() => Scaffold(
-            appBar: bottomcontroller.selectedIndex.value != 0
-                ? null
-                : AppBar(
-                    backgroundColor: Colors.transparent,
-                    centerTitle: true,
-                    title: Image.asset(
-                      FileConstraints.logo2s,
-                      width: 80,
-                    ),
-                    elevation: 0.0,
-                    actions: [
-                      GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.only(right: 20.sp),
-                          child: Center(
-                            child: Text(
-                              "Sign In",
-                              style: TextStyle(
-                                  fontSize: 16.sp,
-                                  color: ColorConstraints.secondarycolor,
-                                  fontWeight: FontWeight.w400),
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                    leading: IconButton(
-                      icon: Icon(
-                        Icons.menu,
-                        color: ColorConstraints.primarycolor,
+            appBar:
+                //  bottomcontroller.selectedIndex.value != 0
+                // ? null
+                // :
+                AppBar(
+              backgroundColor: Colors.transparent,
+              centerTitle: true,
+              title: Image.asset(
+                FileConstraints.logo2s,
+                width: 80,
+              ),
+              elevation: 0.0,
+              actions: [
+                GestureDetector(
+                  onTap: () {
+                    Get.back();
+                  },
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 20.sp),
+                    child: Center(
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                            fontSize: 16.sp,
+                            color: ColorConstraints.secondarycolor,
+                            fontWeight: FontWeight.w400),
                       ),
-                      onPressed: () {
-                        // print(za.toggle);
-                        za.toggle!();
-                        // za.open!();
-                      },
                     ),
                   ),
+                )
+              ],
+              leading: IconButton(
+                icon: Icon(
+                  Icons.menu,
+                  color: ColorConstraints.primarycolor,
+                ),
+                onPressed: () {
+                  // print(za.toggle);
+                  za.toggle!();
+                  // za.open!();
+                },
+              ),
+            ),
             // body: HomeScreen(),
 
             body: bottomcontroller.screenList

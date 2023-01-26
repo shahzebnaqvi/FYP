@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                         snapshot.data!.docs.map((DocumentSnapshot document) {
                       Map<String, dynamic> data =
                           document.data()! as Map<String, dynamic>;
-                      return InkWell(
+                      return GestureDetector(
                         onTap: () {},
                         child: DoctorWidget(
                             imagelink: '${data['profile']}',

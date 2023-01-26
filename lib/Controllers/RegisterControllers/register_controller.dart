@@ -54,7 +54,7 @@ class RegisterController extends GetxController with MainController {
 
   signupfunction(emailAddress, password, name, results, type, field) async {
     loading = true;
-
+    print("object slalas");
     Storage storageobj = Storage();
     var filename = results.files.single.name;
     var pathname = results.files.single.path;
@@ -75,14 +75,14 @@ class RegisterController extends GetxController with MainController {
             'type': type,
             'field': field,
             'email': emailAddress,
-            'username': password,
+            'username': name,
             'password': password,
             'profile': value1
             // "profile/" + emailAddress + "/" + results.files.single.name
           });
         });
-        remail.clear();
-        rpassword.clear();
+        // remail.clear();
+        // rpassword.clear();
         Get.snackbar('Account Created', 'Account Created');
 
         // Navigator.of(context)
@@ -125,7 +125,7 @@ class RegisterController extends GetxController with MainController {
           await FirebaseFirestore.instance.collection("user_detail").add({
             'type': type,
             'email': emailAddress,
-            'username': password,
+            'username': name,
             'password': password,
             'profile': value1,
             // "profile/" + emailAddress + "/" + results.files.single.name

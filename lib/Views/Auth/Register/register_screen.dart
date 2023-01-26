@@ -189,30 +189,32 @@ class RegisterScreen extends StatelessWidget {
                         SizedBox(
                           height: 20.h,
                         ),
-                        Custombuttonbacknopad(
-                            ontapaction: () {
-                              if (registerForm.currentState!.validate()) {
-                                if (typeargu['type'] == "Doctor") {
-                                  registerController.signupfunction(
-                                      registerController.remail.text,
-                                      registerController.rpassword.text,
-                                      registerController.rfname.text,
-                                      registerController.results,
-                                      "${typeargu['type']}",
-                                      registerController.fielddoctor.value);
-                                }
-                                if (typeargu['type'] == "Patient") {
-                                  registerController.signupfunctionPatient(
-                                    registerController.remail.text,
-                                    registerController.rpassword.text,
-                                    registerController.rfname.text,
-                                    registerController.results,
-                                    "${typeargu['type']}",
-                                  );
-                                }
-                              }
-                            },
-                            buttontext: "Register"),
+                        registerController.loading == true
+                            ? Custombuttonbackloading()
+                            : Custombuttonbacknopad(
+                                ontapaction: () {
+                                  if (registerForm.currentState!.validate()) {
+                                    if (typeargu['type'] == "Doctor") {
+                                      registerController.signupfunction(
+                                          registerController.remail.text,
+                                          registerController.rpassword.text,
+                                          registerController.rfname.text,
+                                          registerController.results,
+                                          "${typeargu['type']}",
+                                          registerController.fielddoctor.value);
+                                    }
+                                    if (typeargu['type'] == "Patient") {
+                                      registerController.signupfunctionPatient(
+                                        registerController.remail.text,
+                                        registerController.rpassword.text,
+                                        registerController.rfname.text,
+                                        registerController.results,
+                                        "${typeargu['type']}",
+                                      );
+                                    }
+                                  }
+                                },
+                                buttontext: "Register"),
                         SizedBox(
                           height: 30.h,
                         ),
