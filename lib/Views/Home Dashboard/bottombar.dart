@@ -36,7 +36,7 @@ class Bottomnavbar extends StatelessWidget {
               // currentIndex: bottomcontroller.selectedIndex.value,
               currentIndex: 0,
               selectedItemColor: ColorConstraints.primarycolor,
-              unselectedItemColor: Colors.black,
+              unselectedItemColor: ColorConstraints.primarycolor,
               showUnselectedLabels: false,
               showSelectedLabels: false,
               iconSize: 20,

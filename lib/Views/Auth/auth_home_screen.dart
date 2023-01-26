@@ -63,7 +63,9 @@ class AuthHomeScreen extends StatelessWidget {
                 height: 100.sp,
                 width: MediaQuery.of(context).size.width,
               ),
-              Image.asset(FileConstraints.logo1),
+              typeargu[0]['type'] == "Doctor"
+                  ? Image.asset(FileConstraints.oboard4)
+                  : Image.asset(FileConstraints.oboard5),
               // Image(
               //   image: AssetImage(FileConstraints.logo),
               // ),
