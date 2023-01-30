@@ -7,6 +7,7 @@ import 'package:medicalapp/Views/Auth/Register/register_screen.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screenas_doctor_or_patient.dart';
 import 'package:medicalapp/Views/Onboarding/onboard_screen1.dart';
+import 'package:medicalapp/Views/Patient/Appointment/appointment_screen.dart';
 import 'package:medicalapp/Views/Splash/splash_screen.dart';
 
 class AppRoutes {
@@ -21,6 +22,7 @@ class AppRoutes {
   static String neoanalysis = "/NeoAnalysis";
   static String bmi = "/Bmi";
   static String bp = "/BP";
+  static String appointmentscreen = "/appointmentscreen";
 
   static List<GetPage<dynamic>> routes = [
     GetPage(
@@ -58,6 +60,10 @@ class AppRoutes {
     GetPage(
       name: bp,
       page: () => BP(),
+    ),
+    GetPage(
+      name: appointmentscreen,
+      page: () => AppointmentScreen(),
     ),
   ];
 }

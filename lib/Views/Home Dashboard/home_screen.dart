@@ -13,6 +13,7 @@ import 'package:medicalapp/Components/sliderwidget.dart';
 import 'package:medicalapp/Components/textfield_widget.dart';
 import 'package:medicalapp/Controllers/HomeDashControllers/home_controller.dart';
 import 'package:medicalapp/Controllers/bottom_bar_controller.dart';
+import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
@@ -108,7 +109,12 @@ class HomeScreen extends StatelessWidget {
                             imagelink: '${data['profile']}',
                             doctname: '${data['username']}',
                             doctcat: '${data['field']}',
-                            OnTapbutton: () {}),
+                            OnTapbutton: () {
+                              Get.toNamed(AppRoutes.appointmentscreen,
+                                  arguments: [
+                                    {"imagelink": '${data['profile']}'},
+                                  ]);
+                            }),
                       );
                     }).toList(),
                   );
@@ -205,8 +211,8 @@ class DoctorWidget extends StatelessWidget {
         margin: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.09,
           bottom: MediaQuery.of(context).size.height * 0.020,
-          left: MediaQuery.of(context).size.width * 0.050,
-          right: MediaQuery.of(context).size.width * 0.050,
+          left: MediaQuery.of(context).size.width * 0.030,
+          right: MediaQuery.of(context).size.width * 0.010,
         ),
         padding: EdgeInsets.only(
           top: MediaQuery.of(context).size.height * 0.060,
@@ -218,7 +224,7 @@ class DoctorWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(width: 0, color: Colors.white),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.sp),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.3),
@@ -252,9 +258,21 @@ class DoctorWidget extends StatelessWidget {
       Positioned(
           right: 40.sp,
           top: 90.sp,
-          child: Icon(
-            Icons.message,
-            color: ColorConstraints.secondarycolor,
+          child: GestureDetector(
+            onTap: () {
+              OnTapbutton();
+            },
+            child: Container(
+              padding: EdgeInsets.all(5.sp),
+              decoration: BoxDecoration(
+                color: ColorConstraints.secondarycolor,
+                borderRadius: BorderRadius.circular(10.sp),
+              ),
+              child: Text(
+                "Appointment",
+                style: TextStyle(color: ColorConstraints.white),
+              ),
+            ),
           ))
     ]);
   }
