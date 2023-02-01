@@ -256,7 +256,7 @@ class DoctorWidget extends StatelessWidget {
             backgroundImage: NetworkImage(imagelink),
           )),
       Positioned(
-          right: 40.sp,
+          right: 20.sp,
           top: 90.sp,
           child: GestureDetector(
             onTap: () {

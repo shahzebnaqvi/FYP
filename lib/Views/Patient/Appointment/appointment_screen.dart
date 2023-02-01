@@ -6,6 +6,7 @@ import 'package:medicalapp/Controllers/Patient/appointment_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Views/Patient/Appointment/appointment_comp.dart';
+import 'package:medicalapp/Views/Patient/Appointment/fix_appointment_screen.dart';
 
 class AppointmentScreen extends StatelessWidget {
   AppointmentScreen({super.key});
@@ -200,7 +201,9 @@ class AppointmentScreen extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width * 0.45,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(FixAppointment());
+                },
                 style: ElevatedButton.styleFrom(
                   primary: ColorConstraints.primarycolor,
                 ),

@@ -181,6 +181,22 @@ class DoctorWidget extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 14.sp, fontWeight: FontWeight.bold)),
               ),
+              GestureDetector(
+                onTap: () {
+                  OnTapbutton();
+                },
+                child: Container(
+                  padding: EdgeInsets.all(5.sp),
+                  decoration: BoxDecoration(
+                    color: ColorConstraints.primarycolor,
+                    borderRadius: BorderRadius.circular(10.sp),
+                  ),
+                  child: Text(
+                    "Appointment",
+                    style: TextStyle(color: ColorConstraints.white),
+                  ),
+                ),
+              )
             ],
           ),
         ],
