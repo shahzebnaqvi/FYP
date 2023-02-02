@@ -202,7 +202,12 @@ class AppointmentScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.45,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(FixAppointment());
+                  Get.to(FixAppointment(), arguments: [
+                    {
+                      'profileimagedocts':
+                          '${appointmentControl.argumentData[0]['imagelink']}'
+                    }
+                  ]);
                 },
                 style: ElevatedButton.styleFrom(
                   primary: ColorConstraints.primarycolor,

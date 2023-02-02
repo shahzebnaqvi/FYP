@@ -80,20 +80,27 @@ class RegisterController extends GetxController with MainController {
             'profile': value1
             // "profile/" + emailAddress + "/" + results.files.single.name
           });
+          Get.snackbar('Account Created', 'Account Created');
+          loading = false;
+          update();
         });
         // remail.clear();
         // rpassword.clear();
         Get.snackbar('Account Created', 'Account Created');
-
+        loading = false;
+        update();
         // Navigator.of(context)
         //     .push(MaterialPageRoute(builder: (context) => Login()));
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
           Get.snackbar('Error', 'The password provided is too weak.');
           print('The password provided is too weak.');
+          loading = false;
+          update();
         } else if (e.code == 'email-already-in-use') {
           Get.snackbar('Error', 'The account already exists for that email.');
-
+          loading = false;
+          update();
           print('The account already exists for that email.');
         }
       } catch (e) {

@@ -6,6 +6,7 @@ import 'package:medicalapp/Components/buttons_widget.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FixAppointment extends StatelessWidget {
   FixAppointment({super.key});
@@ -99,8 +100,16 @@ class FixAppointment extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-        child:
-            Custombuttonback(ontapaction: () {}, buttontext: "Fix Appointment"),
+        child: Custombuttonback(
+            ontapaction: () async {
+              await FirebaseFirestore.instance.collection('appointments').add({
+                'patient_name': "_patientName",
+                'patient_email': "_patientEmail",
+                'appointment_date': "_appointmentDate",
+                'doctor_id': "_selectedDoctorId",
+              });
+            },
+            buttontext: "Fix Appointment"),
       ),
     );
   }

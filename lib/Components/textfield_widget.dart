@@ -19,7 +19,7 @@ class TextFieldWidget extends StatelessWidget {
         validator: (value) => validationfunction(value),
         controller: controllertextfield,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         decoration: InputDecoration(
           hintText: "$hinttextfield",
@@ -57,7 +57,7 @@ class TextFieldWidgetobs extends StatelessWidget {
         validator: (value) => validationfunction(value),
         controller: controllertextfield,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         obscureText: isHidden,
         decoration: InputDecoration(
@@ -115,7 +115,7 @@ class TextFieldWidgetwhite extends StatelessWidget {
       child: TextFormField(
           controller: controllertextfield,
           inputFormatters: [
-            LengthLimitingTextInputFormatter(15),
+            LengthLimitingTextInputFormatter(45),
           ],
           decoration: InputDecoration(
             prefixIcon: Icon(
@@ -177,7 +177,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
         toolbarOptions: const ToolbarOptions(copy: false),
         // validator: widget.validator,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
 
         autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -244,7 +244,7 @@ class TextFieldWidgetDatefield extends StatelessWidget {
         enabled: false,
         controller: controllertextfield,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         decoration: InputDecoration(
           suffixIcon: InkWell(
@@ -282,7 +282,7 @@ class TextFieldWidgetpost extends StatelessWidget {
     return TextFormField(
         controller: controllertextfield,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         decoration: InputDecoration(
           isDense: true,
@@ -387,7 +387,7 @@ class TextFieldWidgettextarea extends StatelessWidget {
         keyboardType: TextInputType.multiline,
         controller: controllertextfield,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         decoration: InputDecoration(
           hintText: "$hinttextfield",
@@ -416,7 +416,7 @@ class TextFieldWidgetfileupload extends StatelessWidget {
     return TextFormField(
         enabled: false,
         inputFormatters: [
-          LengthLimitingTextInputFormatter(15),
+          LengthLimitingTextInputFormatter(45),
         ],
         decoration: InputDecoration(
           suffixIcon: InkWell(

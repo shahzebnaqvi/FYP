@@ -54,6 +54,7 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   time_range_picker: ^2.2.0
   calendar_timeline: ^1.1.0
+  get_storage: ^2.0.3
 dev_dependencies:
   flutter_test:
     sdk: flutter

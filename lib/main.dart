@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -13,7 +14,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
+      .then((_) async {
+    await GetStorage.init();
     runApp(MyApp());
   });
 }
