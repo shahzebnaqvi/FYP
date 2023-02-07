@@ -23,88 +23,92 @@ class FixAppointment extends StatelessWidget {
         title: const Text('Appointment Schedule'),
         backgroundColor: ColorConstraints.primarycolor,
       ),
-      body: Column(
-        children: [
-          SizedBox(
-            height: 10.sp,
-          ),
-          CircleAvatar(
-            radius: 50.sp,
-            // backgroundImage: NetworkImage(
-            //   data[0]['profileimagedocts'],
-            // ),
-          ),
-          Text(
-            "Dr shahzeb",
-            style: TextStyle(
-              fontSize: 22.sp,
-              fontWeight: FontWeight.w900,
-              color: ColorConstraints.secondarycolor,
-            ),
-          ),
-          Text(
-            "Dr shahzeb",
-            style: TextStyle(
-              fontSize: 14.sp,
-              fontWeight: FontWeight.w400,
-              color: ColorConstraints.secondarycolor,
-            ),
-          ),
-          SizedBox(
-            height: 20.sp,
-          ),
-          Text(
-            "Schedule",
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w400,
-              color: ColorConstraints.primarycolor,
-            ),
-          ),
-          CalendarTimeline(
-            initialDate: DateTime.now(),
-            firstDate: DateTime.now(),
-            lastDate: DateTime(2024),
-            onDateSelected: (date) {},
-            leftMargin: 20,
-            monthColor: Colors.blueGrey,
-            dayColor: ColorConstraints.secondarycolor,
-            activeDayColor: Colors.white,
-            activeBackgroundDayColor: ColorConstraints.primarycolor,
-            dotsColor: Color(0xFF333A47),
-            selectableDayPredicate: (date) => date.day != 23,
-            locale: 'en_ISO',
-          ),
-          SizedBox(
-            height: 10.sp,
-          ),
-          GestureDetector(
-            onTap: () async {
-              print(data);
+      body: GetBuilder(
+          init: fixappointmentControl,
+          builder: (context1) {
+            return Column(
+              children: [
+                SizedBox(
+                  height: 10.sp,
+                ),
+                CircleAvatar(
+                  radius: 50.sp,
+                  // backgroundImage: NetworkImage(
+                  //   data[0]['profileimagedocts'],
+                  // ),
+                ),
+                Text(
+                  "Dr shahzeb",
+                  style: TextStyle(
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w900,
+                    color: ColorConstraints.secondarycolor,
+                  ),
+                ),
+                Text(
+                  "Dr shahzeb",
+                  style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                    color: ColorConstraints.secondarycolor,
+                  ),
+                ),
+                SizedBox(
+                  height: 20.sp,
+                ),
+                Text(
+                  "Schedule",
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w400,
+                    color: ColorConstraints.primarycolor,
+                  ),
+                ),
+                CalendarTimeline(
+                  initialDate: fixappointmentControl.date,
+                  firstDate: DateTime.now(),
+                  lastDate: DateTime(2024),
+                  onDateSelected: (date) => fixappointmentControl.date = date
+                  // fixappointmentControl.update();
+                  ,
+                  leftMargin: 20,
+                  monthColor: Colors.blueGrey,
+                  dayColor: ColorConstraints.secondarycolor,
+                  activeDayColor: Colors.white,
+                  activeBackgroundDayColor: ColorConstraints.primarycolor,
+                  dotsColor: Color(0xFF333A47),
+                  selectableDayPredicate: (date) {
+                    // fixappointmentControl.selectdate(date);
 
-              fixappointmentControl.selectTime(context);
-            },
-            child: Text(
-              "${DateTime.now().hour} : ${DateTime.now().minute} ${DateTime.now().hour < 12 ? 'AM' : 'PM'}",
-              style: TextStyle(
-                fontSize: 36.sp,
-                color: ColorConstraints.primarycolor,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ),
-        ],
-      ),
+                    return date.day != 23;
+                  },
+                  locale: 'en_ISO',
+                ),
+                SizedBox(
+                  height: 10.sp,
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    print(data);
+
+                    fixappointmentControl.selectTime(context);
+                  },
+                  child: Text(
+                    "${fixappointmentControl.time}",
+                    style: TextStyle(
+                      fontSize: 36.sp,
+                      color: ColorConstraints.primarycolor,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
+            );
+          }),
       bottomNavigationBar: Container(
         child: Custombuttonback(
             ontapaction: () async {
-              await FirebaseFirestore.instance.collection('appointments').add({
-                'patient_name': "_patientName",
-                'patient_email': "_patientEmail",
-                'appointment_date': "_appointmentDate",
-                'appointment_time': "_appointmentDate",
-                'doctor_email': "_selectedDoctorId",
-              });
+              fixappointmentControl.addappointment();
             },
             buttontext: "Fix Appointment"),
       ),
