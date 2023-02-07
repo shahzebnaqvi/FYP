@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Components/buttons_widget.dart';
+import 'package:medicalapp/Controllers/Patient/fix_appointment_controller.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class FixAppointment extends StatelessWidget {
   FixAppointment({super.key});
+  FixAppointmentController fixappointmentControl =
+      Get.put(FixAppointmentController());
 
   @override
   Widget build(BuildContext context) {
@@ -79,14 +82,7 @@ class FixAppointment extends StatelessWidget {
             onTap: () async {
               print(data);
 
-              Future _selectTime(BuildContext context) {
-                return showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay.now(),
-                );
-              }
-
-              _selectTime(context);
+              fixappointmentControl.selectTime(context);
             },
             child: Text(
               "${DateTime.now().hour} : ${DateTime.now().minute} ${DateTime.now().hour < 12 ? 'AM' : 'PM'}",
@@ -106,7 +102,8 @@ class FixAppointment extends StatelessWidget {
                 'patient_name': "_patientName",
                 'patient_email': "_patientEmail",
                 'appointment_date': "_appointmentDate",
-                'doctor_id': "_selectedDoctorId",
+                'appointment_time': "_appointmentDate",
+                'doctor_email': "_selectedDoctorId",
               });
             },
             buttontext: "Fix Appointment"),
