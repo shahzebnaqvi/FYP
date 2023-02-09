@@ -113,6 +113,7 @@ class HomeScreen extends StatelessWidget {
                               Get.toNamed(AppRoutes.appointmentscreen,
                                   arguments: [
                                     {"imagelink": '${data['profile']}'},
+                                    {"email": '${data['email']}'},
                                   ]);
                             }),
                       );

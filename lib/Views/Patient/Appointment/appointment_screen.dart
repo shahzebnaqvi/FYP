@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Controllers/Patient/appointment_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Views/Patient/Appointment/appointment_comp.dart';
 import 'package:medicalapp/Views/Patient/Appointment/fix_appointment_screen.dart';
@@ -102,7 +103,7 @@ class AppointmentScreen extends StatelessWidget {
                                 ),
                               ),
                               Text(
-                                "Dr shahzeb",
+                                "Dr ${appointmentControl.argumentData[1]['email']}",
                                 style: TextStyle(
                                   fontSize: 14.sp,
                                   fontWeight: FontWeight.w400,
@@ -202,11 +203,12 @@ class AppointmentScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.45,
               child: ElevatedButton(
                 onPressed: () {
-                  Get.to(FixAppointment(), arguments: [
+                  Get.toNamed(AppRoutes.fixappointment, arguments: [
                     {
                       'profileimagedocts':
                           '${appointmentControl.argumentData[0]['imagelink']}'
-                    }
+                    },
+                    {'doctemail': appointmentControl.argumentData[1]['email']}
                   ]);
                 },
                 style: ElevatedButton.styleFrom(

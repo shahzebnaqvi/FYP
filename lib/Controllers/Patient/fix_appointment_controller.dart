@@ -17,6 +17,7 @@ class FixAppointmentController extends GetxController with MainController {
   var date = DateTime.now();
   void onInit() {
     argumentData = Get.arguments;
+    print(argumentData);
     super.onInit();
   }
 
@@ -41,13 +42,14 @@ class FixAppointmentController extends GetxController with MainController {
   }
 
   addappointment() async {
+    print("adding appointment");
     await FirebaseFirestore.instance.collection('appointments').add({
       'patient_name': BaseStorage.storage.read("username"),
       'patient_email': BaseStorage.storage.read("email"),
       'patient_profile': BaseStorage.storage.read("profile"),
       'appointment_date': date,
       'appointment_time': time,
-      'doctor_email': BaseStorage.storage.read("username"),
+      'doctor_email': argumentData[1]['email'],
     });
   }
 }
