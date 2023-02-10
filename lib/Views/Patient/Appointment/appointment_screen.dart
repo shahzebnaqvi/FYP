@@ -191,12 +191,15 @@ class AppointmentScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              "Rs 3000",
-              style: TextStyle(
-                fontSize: 22.sp,
-                fontWeight: FontWeight.w900,
-                color: ColorConstraints.primarycolor,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                "Rs 3000",
+                style: TextStyle(
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w900,
+                  color: ColorConstraints.primarycolor,
+                ),
               ),
             ),
             Container(
@@ -208,7 +211,14 @@ class AppointmentScreen extends StatelessWidget {
                       'profileimagedocts':
                           '${appointmentControl.argumentData[0]['imagelink']}'
                     },
-                    {'doctemail': appointmentControl.argumentData[1]['email']}
+                    {
+                      'doctemail':
+                          '${appointmentControl.argumentData[1]['email']}'
+                    },
+                    {
+                      'doctname':
+                          '${appointmentControl.argumentData[2]['name']}'
+                    }
                   ]);
                 },
                 style: ElevatedButton.styleFrom(

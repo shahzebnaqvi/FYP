@@ -113,6 +113,7 @@ class AllDoctorScreen extends StatelessWidget {
                                       arguments: [
                                         {"imagelink": '${data['profile']}'},
                                         {"email": '${data['email']}'},
+                                        {'name': '${data['username']}'}
                                       ]);
                                 }),
                           );

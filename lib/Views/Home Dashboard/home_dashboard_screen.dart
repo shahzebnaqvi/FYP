@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:medicalapp/Components/menu_wiget.dart';
 import 'package:medicalapp/Controllers/bottom_bar_controller.dart';
 import 'package:medicalapp/Routes/routes.dart';
+import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/Home%20Dashboard/bottombar.dart';
@@ -170,6 +171,19 @@ class HomeDashboardScreen extends StatelessWidget {
                         ],
                       );
                     }),
+                SizedBox(
+                  height: 20.sp,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      za.close!();
+                      BaseStorage.storage.erase();
+
+                      Get.offAllNamed(
+                        AppRoutes.doctororpatient,
+                      );
+                    },
+                    child: Menubutton(menutext: "Logout", menuicon: "")),
               ],
             ),
           ),

@@ -28,7 +28,7 @@ class AppRoutes {
   static String appointmentscreen = "/AppointmentScreen";
   static String fixappointment = "/FixAppointment";
   static String homeDashboardScreen = '/HomeDashboardScreen';
-  static String myAppointmentdetail = 'MyAppointmentDetail';
+  static String myAppointmentdetail = '/MyAppointmentDetail';
 
   static List<GetPage<dynamic>> routes = [
     GetPage(

@@ -57,7 +57,7 @@ class MyDoctorAppointments extends StatelessWidget {
                             },
                             child: Appointmentlistcomp(
                                 imagelink: '${data['profile']}',
-                                doctname: '${data['doctor_email']}',
+                                doctname: '${data['doctor_name']}',
                                 doctcat: '${data['appointment_time']}',
                                 date:
                                     '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}'),

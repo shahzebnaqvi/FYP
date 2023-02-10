@@ -108,7 +108,11 @@ class FixAppointment extends StatelessWidget {
       bottomNavigationBar: Container(
         child: Custombuttonback(
             ontapaction: () async {
-              fixappointmentControl.addappointment();
+              fixappointmentControl.addappointment().then((v) {
+                Get.defaultDialog(
+                    title: "Appointment Fixed",
+                    middleText: "Check My Appointment");
+              });
             },
             buttontext: "Fix Appointment"),
       ),

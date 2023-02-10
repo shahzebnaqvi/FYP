@@ -26,7 +26,7 @@ class MyAppointmentDetail extends StatelessWidget {
           title: Row(
             children: [
               HeadingWidget1white(
-                headingtext: "Assessment Detail",
+                headingtext: "Appointment Detail",
               ),
             ],
           ),

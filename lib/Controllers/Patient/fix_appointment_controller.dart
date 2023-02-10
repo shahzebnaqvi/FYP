@@ -17,7 +17,7 @@ class FixAppointmentController extends GetxController with MainController {
   var date = DateTime.now();
   void onInit() {
     argumentData = Get.arguments;
-    print(argumentData);
+    print("dddddddddddddddd $argumentData");
     super.onInit();
   }
 
@@ -49,7 +49,8 @@ class FixAppointmentController extends GetxController with MainController {
       'patient_profile': BaseStorage.storage.read("profile"),
       'appointment_date': date,
       'appointment_time': time,
-      'doctor_email': argumentData[1]['email'],
+      'doctor_email': argumentData[1]['doctemail'],
+      'doctor_name': argumentData[2]['doctname'],
     });
   }
 }

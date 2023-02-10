@@ -12,6 +12,7 @@ class AppointmentController extends GetxController with MainController {
   dynamic argumentData = Get.arguments;
   void onInit() {
     argumentData = Get.arguments;
+    print(argumentData);
     super.onInit();
   }
 }
