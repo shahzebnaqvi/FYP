@@ -4,8 +4,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Routes/routes.dart';
+import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
+import 'package:medicalapp/Views/Home Dashboard/home_dashboard_screen.dart';
 
 int _curr = 0;
 var _list2 = [1, 2, 3];
@@ -225,6 +227,15 @@ class _PagesOnboardState extends State<PagesOnboard> {
   }
 }
 
-void goToHome(BuildContext context) => Get.offAllNamed(
+void goToHome(BuildContext context) {
+  if (BaseStorage.storage.read('email') == '' ||
+      BaseStorage.storage.read('email') == null) {
+    Get.offAllNamed(
       AppRoutes.doctororpatient,
     );
+  } else {
+    Get.offAllNamed(
+      AppRoutes.homeDashboardScreen,
+    );
+  }
+}

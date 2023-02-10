@@ -69,7 +69,7 @@ class Bottomnavbar extends StatelessWidget {
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
-                  label: 'Favourite',
+                  label: 'Doctors',
                 ),
                 BottomNavigationBarItem(
                   icon: bottomcontroller.selectedIndex.value == 2
@@ -86,7 +86,7 @@ class Bottomnavbar extends StatelessWidget {
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
-                  label: 'Notification',
+                  label: 'Appointments',
                 ),
                 BottomNavigationBarItem(
                   icon: bottomcontroller.selectedIndex.value == 3

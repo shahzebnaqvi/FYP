@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Components/heading_row_wiget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
+import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 
 class AllDoctorScreen extends StatelessWidget {
@@ -107,7 +108,13 @@ class AllDoctorScreen extends StatelessWidget {
                                 imagelink: '${data['profile']}',
                                 doctname: '${data['username']}',
                                 doctcat: '${data['field']}',
-                                OnTapbutton: () {}),
+                                OnTapbutton: () {
+                                  Get.toNamed(AppRoutes.appointmentscreen,
+                                      arguments: [
+                                        {"imagelink": '${data['profile']}'},
+                                        {"email": '${data['email']}'},
+                                      ]);
+                                }),
                           );
                         }).toList(),
                       );
