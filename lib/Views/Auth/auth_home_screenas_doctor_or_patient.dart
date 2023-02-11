@@ -31,35 +31,6 @@ class DoctorOrPatient extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          // leading: GestureDetector(
-          //   onTap: () {
-          //     authhomeController.backpage();
-          //   },
-          //   child: Icon(
-          //     Icons.arrow_back_ios,
-          //     color: ColorConstraints.blackcolor,
-          //   ),
-          // ),
-          actions: [
-            GestureDetector(
-              onTap: () {
-                Get.to(HomeDashboardScreen());
-              },
-              child: Padding(
-                padding: EdgeInsets.only(right: 15.sp),
-                child: Center(
-                  child: Text(
-                    "Register Later",
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: ColorConstraints.secondarycolor,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w400),
-                  ),
-                ),
-              ),
-            )
-          ],
         ),
         body: SingleChildScrollView(
           child: Column(

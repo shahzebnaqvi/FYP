@@ -215,25 +215,6 @@ class HomeScreenBody extends StatelessWidget {
                 width: 80,
               ),
               elevation: 0.0,
-              actions: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: Padding(
-                    padding: EdgeInsets.only(right: 20.sp),
-                    child: Center(
-                      child: Text(
-                        "Sign In",
-                        style: TextStyle(
-                            fontSize: 16.sp,
-                            color: ColorConstraints.secondarycolor,
-                            fontWeight: FontWeight.w400),
-                      ),
-                    ),
-                  ),
-                )
-              ],
               leading: IconButton(
                 icon: Icon(
                   Icons.menu,
