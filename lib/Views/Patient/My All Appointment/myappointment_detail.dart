@@ -127,11 +127,7 @@ class MyAppointmentDetail extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.9,
                       decoration: BoxDecoration(
                           color: ColorConstraints.white,
-                          boxShadow:
-                              // pertext == 0
-                              //     ? null
-                              //     :
-                              [
+                          boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 5,

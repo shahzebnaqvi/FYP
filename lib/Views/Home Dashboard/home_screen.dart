@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +21,7 @@ import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
 import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -50,32 +52,20 @@ class HomeScreen extends StatelessWidget {
             child: SliderWidget(),
           ),
           HeadingRowhead(
-            headingtext: "AI Models Prediction",
+            headingtext: "Categories",
           ),
           Container(
-            padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                PredictionButton(
-                    imagelink: FileConstraints.neoanalysis,
-                    heading: "Neo Analysis",
-                    OnTapbutton: () {
-                      Get.to(() => NeoAnalysis());
-                    }),
-                PredictionButton(
-                    imagelink: FileConstraints.videovital,
-                    heading: "Video Vitals",
-                    OnTapbutton: () {
-                      Get.to(() => VideoVitalScreen());
-                    }),
-                PredictionButton(
-                    imagelink: "assets/images/microscope.png",
-                    heading: "Brain Tumour",
-                    OnTapbutton: () {})
-              ],
-            ),
+            height: 140.sp,
+            child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                // shrinkWrap: true,
+                itemCount: 5,
+                // physics: NeverScrollableScrollPhysics(),
+                itemBuilder: ((context, index) => FieldComp(
+                      colors: Color(homecontrol.colorsarray[index]),
+                      img: homecontrol.iconlist[index],
+                      text: homecontrol.categories[index],
+                    ))),
           ),
           HeadingRowhead(
             headingtext: "Doctors",
@@ -121,6 +111,34 @@ class HomeScreen extends StatelessWidget {
                     }).toList(),
                   );
                 }),
+          ),
+          HeadingRowhead(
+            headingtext: "AI Models Prediction",
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PredictionButton(
+                    imagelink: FileConstraints.neoanalysis,
+                    heading: "Neo Analysis",
+                    OnTapbutton: () {
+                      Get.to(() => NeoAnalysis());
+                    }),
+                PredictionButton(
+                    imagelink: FileConstraints.videovital,
+                    heading: "Video Vitals",
+                    OnTapbutton: () {
+                      Get.to(() => VideoVitalScreen());
+                    }),
+                PredictionButton(
+                    imagelink: "assets/images/microscope.png",
+                    heading: "Brain Tumour",
+                    OnTapbutton: () {})
+              ],
+            ),
           ),
           HeadingRowhead(
             headingtext: "Other Tools",
@@ -326,4 +344,57 @@ Widget containericonsmall(context, iconname, icontext, backgroundcolor) {
       ],
     ),
   );
+}
+
+class FieldComp extends StatelessWidget {
+  final colors;
+  final img;
+  final text;
+  FieldComp(
+      {super.key, required this.colors, required this.img, required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: colors,
+          border: Border.all(width: 0, color: Colors.white),
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 5,
+              blurRadius: 10,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
+        ),
+        margin: EdgeInsets.only(
+          left: MediaQuery.of(context).size.width * 0.050,
+        ),
+        width: 120,
+        height: 150,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Icon(
+              img,
+              color: ColorConstraints.white,
+              size: 40.sp,
+            ),
+            // Image(image: AssetImage(img)),
+
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+                text,
+                style: TextStyle(fontSize: 10, color: Colors.white),
+              ),
+            ),
+          ],
+        ));
+    ;
+  }
 }

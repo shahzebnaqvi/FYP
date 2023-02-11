@@ -14,7 +14,7 @@ class BottombarController extends GetxController {
     AllDoctorScreen(),
     MyDoctorAppointments(),
     ProfileScreen(),
-    HomeScreen()
+    AllDoctorScreen()
   ];
 
   var selectedIndex = 0.obs;
