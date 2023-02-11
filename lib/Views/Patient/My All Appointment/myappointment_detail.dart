@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:medicalapp/Components/buttons_widget.dart';
 import 'package:medicalapp/Components/heading_widget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
+import 'package:medicalapp/Controllers/Patient/appointment_detail_controller.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,8 +15,9 @@ import 'package:medicalapp/Utils/file_contraints.dart';
 
 class MyAppointmentDetail extends StatelessWidget {
   MyAppointmentDetail({super.key});
-  AllDoctorPatientController allDoctorPatientControl =
-      Get.put(AllDoctorPatientController());
+  AppointmentDetailController appointmentdetailControl =
+      Get.put(AppointmentDetailController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class MyAppointmentDetail extends StatelessWidget {
           ),
         ),
         body: GetBuilder(
-            init: allDoctorPatientControl,
+            init: appointmentdetailControl,
             builder: (contexta) {
               return SingleChildScrollView(
                 child: Center(
@@ -63,12 +65,25 @@ class MyAppointmentDetail extends StatelessWidget {
                                 SizedBox(
                                   height: 30.sp,
                                 ),
-                                SvgPicture.asset(FileConstraints.logo),
+                                Container(
+                                  padding: EdgeInsets.all(20.sp),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20.sp),
+                                    ),
+                                    color: ColorConstraints.white,
+                                  ),
+                                  child: Icon(
+                                    Icons.medical_information,
+                                    color: ColorConstraints.primarycolor,
+                                    size: 50.sp,
+                                  ),
+                                ),
                                 SizedBox(
-                                  height: 10.sp,
+                                  height: 30.sp,
                                 ),
                                 Text(
-                                  "scsd",
+                                  "${appointmentdetailControl.argumentData[0]['appointment_time']}",
                                   style: TextStyle(
                                       fontSize: 25.sp,
                                       fontWeight: FontWeight.w600,
@@ -78,14 +93,14 @@ class MyAppointmentDetail extends StatelessWidget {
                                   height: 10.sp,
                                 ),
                                 Text(
-                                  "Doctor: ",
+                                  "Date: ${appointmentdetailControl.argumentData[0]['date']}",
                                   style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w400,
                                       color: ColorConstraints.white),
                                 ),
                                 Text(
-                                  "Date",
+                                  "Dr ${appointmentdetailControl.argumentData[0]['doctor_name']}",
                                   style: TextStyle(
                                       fontSize: 18.sp,
                                       fontWeight: FontWeight.w400,
@@ -131,7 +146,21 @@ class MyAppointmentDetail extends StatelessWidget {
                       child: Column(
                         children: [
                           Appointmentdetailcomp(
-                              titlehead: "Date:", titledetail: "32:42"),
+                              titlehead: "Doctor Name:",
+                              titledetail:
+                                  "${appointmentdetailControl.argumentData[0]['doctor_name']}"),
+                          Appointmentdetailcomp(
+                              titlehead: "Doctor Email:",
+                              titledetail:
+                                  "${appointmentdetailControl.argumentData[0]['doctor_email']}"),
+                          Appointmentdetailcomp(
+                              titlehead: "My Name:",
+                              titledetail:
+                                  "${appointmentdetailControl.argumentData[0]['patient_name']}"),
+                          Appointmentdetailcomp(
+                              titlehead: "My Email:",
+                              titledetail:
+                                  "${appointmentdetailControl.argumentData[0]['patient_email']}"),
                         ],
                       ),
                     )
@@ -148,8 +177,10 @@ class MyAppointmentDetail extends StatelessWidget {
                       EdgeInsets.only(bottom: 12.sp, right: 12.sp, left: 6.sp),
                   width: MediaQuery.of(context).size.width * 0.95,
                   child: Custombuttonbacknopad(
-                    ontapaction: () {},
-                    buttontext: "Submit",
+                    ontapaction: () {
+                      Get.back();
+                    },
+                    buttontext: "Back",
                   ))
             ]));
   }
