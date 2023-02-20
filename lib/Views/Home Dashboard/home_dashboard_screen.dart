@@ -13,34 +13,6 @@ import 'package:medicalapp/Views/Home%20Dashboard/bottombar.dart';
 
 final ZoomDrawerController za = ZoomDrawerController();
 
-// class HomeDashboardScreen extends StatelessWidget {
-//   HomeDashboardScreen({super.key});
-//   BottombarController bottomcontroller = Get.put(BottombarController());
-//   var tiles = [
-//     {
-//       'text': "About Us",
-//       'icon': FileConstraints.logo1,
-//       'screen': AppRoutes.loginscreen
-//     },
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     return ZoomDrawer(
-//       controller: za,
-//       style: DrawerStyle.defaultStyle,
-//       menuScreen: MenuScreen(),
-//       mainScreen: MainScreen(),
-//       borderRadius: 24.0,
-//       showShadow: true,
-//       angle: -12.0,
-//       drawerShadowsBackgroundColor: Colors.grey[300],
-//       slideWidth: MediaQuery.of(context).size.width*.65,
-//       openCurve: Curves.fastOutSlowIn,
-//       closeCurve: Curves.bounceIn,
-//     );
-//   }
-// }
-
 class HomeDashboardScreen extends StatelessWidget {
   HomeDashboardScreen({Key? key}) : super(key: key);
   BottombarController bottomcontroller = Get.put(BottombarController());
@@ -72,23 +44,7 @@ class HomeDashboardScreen extends StatelessWidget {
       'screen': Icons.domain_verification_rounded
     },
   ];
-  //   {
-  //   'text': "Neo Analysis",
-  //   'icon': FileConstraints.logo1,
-  //   'screen': NeoAnalysis()
-  // },
-  // {
-  //   'text': "Video Vital",
-  //   'icon': FileConstraints.logo1,
-  //   'screen': VideoVitalScreen()
-  // },
-  // {'text': "BMI Calculator", 'icon': FileConstraints.logo1, 'screen': Bmi()},
-  // {'text': "BP Record", 'icon': FileConstraints.logo1, 'screen': BP()},
-  // {
-  //   'text': "Doctors",
-  //   'icon': FileConstraints.logo1,
-  //   'screen': HomeDashboardScreen()
-  // },
+
   @override
   Widget build(BuildContext context) {
     return ZoomDrawer(
@@ -203,6 +159,7 @@ class HomeScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       (() => Scaffold(
+            backgroundColor: ColorConstraints.backgroundcolor,
             appBar:
                 //  bottomcontroller.selectedIndex.value != 0
                 // ? null

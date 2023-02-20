@@ -8,6 +8,7 @@ import 'package:medicalapp/Components/heading_row_wiget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
+import 'package:medicalapp/Components/doctorlist_widget.dart';
 
 class AllDoctorScreen extends StatelessWidget {
   AllDoctorScreen({super.key});
@@ -123,92 +124,6 @@ class AllDoctorScreen extends StatelessWidget {
               ],
             );
           }),
-    );
-  }
-}
-
-class DoctorWidget extends StatelessWidget {
-  final imagelink;
-  final doctname;
-  final doctcat;
-  final OnTapbutton;
-  const DoctorWidget(
-      {super.key,
-      required this.imagelink,
-      required this.doctname,
-      required this.doctcat,
-      required this.OnTapbutton});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(
-        top: 15.sp,
-        // bottom: MediaQuery.of(context).size.height * 0.020,
-        left: 10.sp,
-        right: 10.sp,
-      ),
-      padding: EdgeInsets.only(
-        top: 10.sp,
-        bottom: 10.sp,
-        right: 10.sp,
-        left: 10.sp,
-      ),
-      width: MediaQuery.of(context).size.width * .92,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(width: 0, color: Colors.white),
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 5,
-            blurRadius: 10,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 40.sp,
-            backgroundImage: NetworkImage(imagelink),
-          ),
-          SizedBox(
-            width: 10.sp,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text("Dr $doctname",
-                  style:
-                      TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold)),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, bottom: 12.0),
-                child: Text(doctcat,
-                    style: TextStyle(
-                        fontSize: 14.sp, fontWeight: FontWeight.bold)),
-              ),
-              GestureDetector(
-                onTap: () {
-                  OnTapbutton();
-                },
-                child: Container(
-                  padding: EdgeInsets.all(5.sp),
-                  decoration: BoxDecoration(
-                    color: ColorConstraints.primarycolor,
-                    borderRadius: BorderRadius.circular(10.sp),
-                  ),
-                  child: Text(
-                    "Appointment",
-                    style: TextStyle(color: ColorConstraints.white),
-                  ),
-                ),
-              )
-            ],
-          ),
-        ],
-      ),
     );
   }
 }

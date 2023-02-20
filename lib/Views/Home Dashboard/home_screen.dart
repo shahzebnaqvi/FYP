@@ -21,7 +21,7 @@ import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
 import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:medicalapp/Components/doctorlist_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -46,72 +46,124 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: 200.sp,
-            child: SliderWidget(),
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(20.sp),
+              height: 180.sp,
+              width: MediaQuery.of(context).size.width * 0.9,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20.sp)),
+                image: DecorationImage(
+                    image: AssetImage(FileConstraints.homebanner),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.centerRight),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 10.sp,
+                  ),
+                  Text(
+                    "Do you feel there are \nsymptoms on your body?",
+                    style: TextStyle(
+                        fontSize: 18.sp,
+                        fontWeight: FontWeight.w700,
+                        color: ColorConstraints.white),
+                  ),
+                  SizedBox(
+                    height: 20.sp,
+                  ),
+                  ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: Color(0XffDB2B6A)),
+                      onPressed: () {},
+                      child: Text("Start Consultation"))
+                ],
+              ),
+            ),
           ),
+          // Container(
+          //   width: MediaQuery.of(context).size.width,
+          //   height: 200.sp,
+          //   child: SliderWidget(),
+          // ),
           HeadingRowhead(
             headingtext: "Categories",
           ),
           Container(
-            height: 140.sp,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                // shrinkWrap: true,
-                itemCount: 5,
-                // physics: NeverScrollableScrollPhysics(),
-                itemBuilder: ((context, index) => FieldComp(
-                      colors: Color(homecontrol.colorsarray[index]),
-                      img: homecontrol.iconlist[index],
-                      text: homecontrol.categories[index],
-                    ))),
+            padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Categoriesbut(
+                    imagelink: FileConstraints.Radiologists,
+                    heading: "Radiologists",
+                    OnTapbutton: () {
+                      // Get.to(() => NeoAnalysis());
+                    }),
+                Categoriesbut(
+                    imagelink: FileConstraints.Neurologists,
+                    heading: "Neurologists",
+                    OnTapbutton: () {
+                      // Get.to(() => VideoVitalScreen());
+                    }),
+                Categoriesbut(
+                    imagelink: FileConstraints.Psychiatrists,
+                    heading: "Psychiatrists",
+                    OnTapbutton: () {}),
+                Categoriesbut(
+                    imagelink: FileConstraints.Pediatrician,
+                    heading: "Pediatrician",
+                    OnTapbutton: () {})
+              ],
+            ),
           ),
           HeadingRowhead(
-            headingtext: "Doctors",
+            headingtext: "Popular Doctors",
           ),
-          Container(
-            height: 215.sp,
-            child: StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection('user_detail')
-                    // .where("gender",)
-                    .where('type', isEqualTo: 'Doctor')
-                    // .orderBy('datecreation', descending: true)
-                    .snapshots(),
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Error");
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: Text(""));
-                  }
-                  return ListView(
-                    scrollDirection: Axis.horizontal,
-                    children:
-                        snapshot.data!.docs.map((DocumentSnapshot document) {
-                      Map<String, dynamic> data =
-                          document.data()! as Map<String, dynamic>;
-                      return GestureDetector(
-                        onTap: () {},
-                        child: DoctorWidget(
-                            imagelink: '${data['profile']}',
-                            doctname: '${data['username']}',
-                            doctcat: '${data['field']}',
-                            OnTapbutton: () {
-                              Get.toNamed(AppRoutes.appointmentscreen,
-                                  arguments: [
-                                    {"imagelink": '${data['profile']}'},
-                                    {"email": '${data['email']}'},
-                                    {'name': '${data['username']}'}
-                                  ]);
-                            }),
-                      );
-                    }).toList(),
-                  );
-                }),
-          ),
+          StreamBuilder<QuerySnapshot>(
+              stream: FirebaseFirestore.instance
+                  .collection('user_detail')
+                  // .where("gender",)
+                  .where('type', isEqualTo: 'Doctor')
+                  // .orderBy('datecreation', descending: true)
+                  .snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text("Error");
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: Text(""));
+                }
+                return ListView(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  children:
+                      snapshot.data!.docs.map((DocumentSnapshot document) {
+                    Map<String, dynamic> data =
+                        document.data()! as Map<String, dynamic>;
+                    return GestureDetector(
+                      onTap: () {},
+                      child: DoctorWidget(
+                          imagelink: '${data['profile']}',
+                          doctname: '${data['username']}',
+                          doctcat: '${data['field']}',
+                          OnTapbutton: () {
+                            Get.toNamed(AppRoutes.appointmentscreen,
+                                arguments: [
+                                  {"imagelink": '${data['profile']}'},
+                                  {"email": '${data['email']}'},
+                                  {'name': '${data['username']}'}
+                                ]);
+                          }),
+                    );
+                  }).toList(),
+                );
+              }),
           HeadingRowhead(
             headingtext: "AI Models Prediction",
           ),
@@ -212,89 +264,50 @@ class PredictionButton extends StatelessWidget {
   }
 }
 
-class DoctorWidget extends StatelessWidget {
+class Categoriesbut extends StatelessWidget {
   final imagelink;
-  final doctname;
-  final doctcat;
+  final heading;
   final OnTapbutton;
-  const DoctorWidget(
+  const Categoriesbut(
       {super.key,
       required this.imagelink,
-      required this.doctname,
-      required this.doctcat,
+      required this.heading,
       required this.OnTapbutton});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(children: [
-      Container(
-        margin: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.09,
-          bottom: MediaQuery.of(context).size.height * 0.020,
-          left: MediaQuery.of(context).size.width * 0.030,
-          right: MediaQuery.of(context).size.width * 0.010,
-        ),
-        padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.060,
-          left: MediaQuery.of(context).size.width * 0.040,
-          bottom: MediaQuery.of(context).size.height * 0.030,
-          right: MediaQuery.of(context).size.width * 0.020,
-        ),
-        width: MediaQuery.of(context).size.width * 0.6,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(width: 0, color: Colors.white),
-          borderRadius: BorderRadius.circular(20.sp),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 10,
-              offset: Offset(0, 3), // changes position of shadow
+    return GestureDetector(
+      onTap: () {
+        OnTapbutton();
+      },
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          CircleAvatar(
+            backgroundColor: ColorConstraints.primary1,
+            radius: 35.sp,
+            child: CircleAvatar(
+              backgroundColor: ColorConstraints.primarycolor,
+              radius: 30.sp,
+              child: Image.asset(
+                imagelink,
+                width: 30.sp,
+              ),
             ),
-          ],
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Dr $doctname",
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold)),
-            Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 12.0),
-              child: Text(doctcat,
-                  style:
-                      TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold)),
-            ),
-          ],
-        ),
+          ),
+          SizedBox(
+            height: 5.sp,
+          ),
+          Text(
+            heading,
+            style: TextStyle(
+                color: ColorConstraints.primary2,
+                fontSize: 12.sp,
+                fontWeight: FontWeight.w600),
+          )
+        ],
       ),
-      Positioned(
-          left: 30.sp,
-          top: 10.sp,
-          child: CircleAvatar(
-            radius: 50.sp,
-            backgroundImage: NetworkImage(imagelink),
-          )),
-      Positioned(
-          right: 20.sp,
-          top: 90.sp,
-          child: GestureDetector(
-            onTap: () {
-              OnTapbutton();
-            },
-            child: Container(
-              padding: EdgeInsets.all(5.sp),
-              decoration: BoxDecoration(
-                color: ColorConstraints.secondarycolor,
-                borderRadius: BorderRadius.circular(10.sp),
-              ),
-              child: Text(
-                "Appointment",
-                style: TextStyle(color: ColorConstraints.white),
-              ),
-            ),
-          ))
-    ]);
+    );
   }
 }
 

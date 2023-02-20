@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ColorConstraints {
-  static Color primarycolor = Color(0xff0571af);
+  static Color primarycolor = Color(0xff1E78C0);
   static Color primarycolor1shade = Color(0xff7CA798);
   static Color secondarycolor = Color(0xffe99521);
   static Color blackcolor = Color(0xff2E2E2E);
@@ -24,6 +24,10 @@ class ColorConstraints {
   static Color menubuttonback = Color(0xffF1F6F4);
   static Color tilevideolistcol = Color(0XffF6F5F5);
   static Color revbackcolor = Color(0xffF5F5F5);
-
+  static Color primary2 = Color(0xff1E3354);
+  static Color primary1 = Color(0xffC9E2F6);
+  static Color greylight = Color(0xffBCBCBC);
+  static Color greenlight = Color(0xff4E944F);
+  static Color backgroundcolor = Color(0xffF8F8F8);
   static Color red = Color.fromARGB(255, 184, 28, 23);
 }

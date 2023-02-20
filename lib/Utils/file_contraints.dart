@@ -14,4 +14,9 @@ class FileConstraints {
   static String oboard5 = "assets/images/onboard5.png";
   static String videovital = "assets/images/Video-Call.png";
   static String neoanalysis = "assets/images/microscope.png";
+  static String homebanner = "assets/images/icons/bannerhome.png";
+  static String Radiologists = "assets/images/icons/Radiologists.png";
+  static String Neurologists = "assets/images/icons/Neurologists.png";
+  static String Psychiatrists = "assets/images/icons/Psychiatrists.png";
+  static String Pediatrician = "assets/images/icons/Pediatrician.png";
 }

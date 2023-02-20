@@ -81,6 +81,7 @@ flutter:
   assets:
     - assets/images/
     - assets/lottiefile/
+    - assets/images/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -95,14 +96,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Roboto
+    - family: Helvetica
       fonts:
-        - asset: assets/fonts/Roboto-Black.ttf
-        - asset: assets/fonts/Roboto-Bold.ttf
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
-        - asset: assets/fonts/Roboto-Light.ttf
-        - asset: assets/fonts/Roboto-Thin.ttf
+        - asset: assets/fonts/Helvetica.ttf
+        - asset: assets/fonts/Helvetica-Bold.ttf
+        - asset: assets/fonts/Helvetica-BoldOblique.ttf
+        - asset: assets/fonts/helvetica-light.ttf
+        - asset: assets/fonts/Helvetica-Oblique.ttf
   # fonts:
   #   - family: Schyler
   #     fonts:
