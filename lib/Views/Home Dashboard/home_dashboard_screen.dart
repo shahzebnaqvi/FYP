@@ -196,7 +196,10 @@ class HomeScreenBody extends StatelessWidget {
                 // print(bottomcontroller.selectedIndex.value);
               },
               child: Container(
-                child: Icon(Icons.medical_information), //icon inside button
+                child: Image.asset(
+                  "assets/images/icons/doctor.png",
+                  width: 25.sp,
+                ), //icon inside button
 
                 decoration: BoxDecoration(
                   color: Colors.transparent,

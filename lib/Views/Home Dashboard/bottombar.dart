@@ -47,10 +47,10 @@ class Bottomnavbar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: bottomcontroller.selectedIndex.value == 0
                       ? Buttonbackcolor(
-                          filename: Icons.home,
+                          filename: "assets/images/icons/home.png",
                           colorname: ColorConstraints.menubuttonback)
                       : Buttonbackcolor(
-                          filename: Icons.home,
+                          filename: "assets/images/icons/home2.png",
                           colorname: ColorConstraints.white.withOpacity(0.2)),
                   label: 'Home',
                 ),
@@ -59,13 +59,13 @@ class Bottomnavbar extends StatelessWidget {
                       ? Padding(
                           padding: EdgeInsets.only(right: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.document_scanner_rounded,
+                              filename: "assets/images/icons/schedule2.png",
                               colorname: ColorConstraints.menubuttonback),
                         )
                       : Padding(
                           padding: EdgeInsets.only(right: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.document_scanner_rounded,
+                              filename: "assets/images/icons/schedule.png",
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
@@ -76,13 +76,13 @@ class Bottomnavbar extends StatelessWidget {
                       ? Padding(
                           padding: EdgeInsets.only(left: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.call,
+                              filename: "assets/images/icons/menu2.png",
                               colorname: ColorConstraints.menubuttonback),
                         )
                       : Padding(
                           padding: EdgeInsets.only(left: 25.sp),
                           child: Buttonbackcolor(
-                              filename: Icons.call,
+                              filename: "assets/images/icons/menu.png",
                               colorname:
                                   ColorConstraints.white.withOpacity(0.2)),
                         ),
@@ -91,10 +91,10 @@ class Bottomnavbar extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: bottomcontroller.selectedIndex.value == 3
                       ? Buttonbackcolor(
-                          filename: Icons.person,
+                          filename: "assets/images/icons/person.png",
                           colorname: ColorConstraints.menubuttonback)
                       : Buttonbackcolor(
-                          filename: Icons.person,
+                          filename: "assets/images/icons/person2.png",
                           colorname: ColorConstraints.white.withOpacity(0.2)),
                   // icon: Icon(FontAwesomeIcons.user),
                   label: 'Profile',
@@ -123,9 +123,9 @@ class Buttonbackcolor extends StatelessWidget {
           //   color: Colors.red,
           // ),
           borderRadius: BorderRadius.all(Radius.circular(5))),
-      child: Icon(
+      child: Image.asset(
         filename,
-        // width: 25.sp,
+        width: 25.sp,
       ),
     );
   }
