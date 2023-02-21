@@ -49,7 +49,7 @@ class HeadingRowhead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10.sp, bottom: 10.sp),
+      padding: EdgeInsets.only(top: 30.sp, bottom: 10.sp),
       width: MediaQuery.of(context).size.width * 0.9,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,8 +57,8 @@ class HeadingRowhead extends StatelessWidget {
           Text(
             "${headingtext}",
             style: TextStyle(
-                color: ColorConstraints.secondarycolor,
-                fontSize: 20.sp,
+                color: ColorConstraints.primary2,
+                fontSize: 22.sp,
                 fontWeight: FontWeight.w700),
           ),
         ],
