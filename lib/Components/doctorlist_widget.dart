@@ -103,3 +103,115 @@ class DoctorWidget extends StatelessWidget {
     );
   }
 }
+
+class DoctorWidgetAppointments extends StatelessWidget {
+  final imagelink;
+  final doctname;
+  final doctcat;
+  final doctdate;
+  final OnTapbutton;
+  const DoctorWidgetAppointments(
+      {super.key,
+      required this.imagelink,
+      required this.doctname,
+      required this.doctcat,
+      required this.doctdate,
+      required this.OnTapbutton});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        OnTapbutton();
+      },
+      child: Stack(
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              top: 15.sp,
+              // bottom: MediaQuery.of(context).size.height * 0.020,
+              left: 10.sp,
+              right: 10.sp,
+            ),
+            padding: EdgeInsets.only(
+              top: 10.sp,
+              bottom: 10.sp,
+              right: 10.sp,
+              left: 10.sp,
+            ),
+            width: MediaQuery.of(context).size.width * .92,
+            decoration: BoxDecoration(
+              color: ColorConstraints.primary1,
+              border: Border.all(width: 0, color: Colors.white),
+              borderRadius: BorderRadius.circular(5.sp),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.2),
+                  spreadRadius: 5,
+                  blurRadius: 10,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Container(
+                    height: 110.sp,
+                    width: 110.sp,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(2.sp)),
+                      image: DecorationImage(
+                          image: NetworkImage(imagelink),
+                          fit: BoxFit.cover,
+                          alignment: Alignment.centerRight),
+                    )),
+                SizedBox(
+                  width: 10.sp,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 12.0),
+                      child: Text(doctcat,
+                          style: TextStyle(
+                              fontSize: 14.sp,
+                              fontWeight: FontWeight.bold,
+                              color: ColorConstraints.primarycolor)),
+                    ),
+                    Text("Dr $doctname",
+                        style: TextStyle(
+                            color: ColorConstraints.primary2,
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.bold)),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 12.0),
+                      child: Text(doctdate,
+                          style: TextStyle(
+                              fontSize: 12.sp,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xff687DA2))),
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+              right: 20.sp,
+              top: 30.sp,
+              child: Text(
+                "Pending",
+                style: TextStyle(
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.normal,
+                    color: ColorConstraints.greenlight),
+              ))
+        ],
+      ),
+    );
+  }
+}

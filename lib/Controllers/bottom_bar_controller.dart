@@ -11,7 +11,7 @@ import 'package:medicalapp/Views/Profile/profile_screen.dart';
 class BottombarController extends GetxController {
   List<Widget> screenList = [
     HomeScreen(),
-    AllDoctorScreen(),
+    MyDoctorAppointments(),
     MyDoctorAppointments(),
     ProfileScreen(),
     AllDoctorScreen()

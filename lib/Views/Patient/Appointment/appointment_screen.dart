@@ -1,7 +1,9 @@
+import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:medicalapp/Components/buttons_widget.dart';
 import 'package:medicalapp/Controllers/Patient/appointment_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicalapp/Routes/routes.dart';
@@ -161,7 +163,68 @@ class AppointmentScreen extends StatelessWidget {
                             featureicon: "6",
                             featurecolor: ColorConstraints.secondarycolor),
                       ],
-                    )
+                    ),
+                    SizedBox(
+                      height: 20.sp,
+                    ),
+                    Text(
+                      "Schedule",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
+                        color: ColorConstraints.primarycolor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    CalendarTimeline(
+                      initialDate: appointmentControl.date,
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime(2024),
+                      onDateSelected: (date) => appointmentControl.date = date
+                      // fixappointmentControl.update();
+                      ,
+                      leftMargin: 20,
+                      monthColor: Colors.blueGrey,
+                      dayColor: ColorConstraints.secondarycolor,
+                      activeDayColor: Colors.white,
+                      activeBackgroundDayColor: ColorConstraints.primarycolor,
+                      dotsColor: Color(0xFF333A47),
+                      selectableDayPredicate: (date) {
+                        // fixappointmentControl.selectdate(date);
+
+                        return date.day != 23;
+                      },
+                      locale: 'en_ISO',
+                    ),
+                    SizedBox(
+                      height: 20.sp,
+                    ),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () async {
+                          appointmentControl.selectTime(context);
+                        },
+                        child: Text(
+                          "${appointmentControl.time}",
+                          style: TextStyle(
+                            fontSize: 26.sp,
+                            color: ColorConstraints.primarycolor,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Custombuttonback(
+                        ontapaction: () async {
+                          appointmentControl.addappointment().then((v) {
+                            Get.defaultDialog(
+                                title: "Appointment Fixed",
+                                middleText: "Check My Appointment");
+                          });
+                        },
+                        buttontext: "Fix Appointment"),
                   ],
                 ),
               ),
@@ -169,67 +232,67 @@ class AppointmentScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.only(
-          top: 10.sp,
-          bottom: 10.sp,
-          right: 10.sp,
-          left: 10.sp,
-        ),
-        decoration: BoxDecoration(
-          color: ColorConstraints.white,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 5,
-              blurRadius: 7,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          // mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                "Rs 3000",
-                style: TextStyle(
-                  fontSize: 22.sp,
-                  fontWeight: FontWeight.w900,
-                  color: ColorConstraints.primarycolor,
-                ),
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.45,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(AppRoutes.fixappointment, arguments: [
-                    {
-                      'profileimagedocts':
-                          '${appointmentControl.argumentData[0]['imagelink']}'
-                    },
-                    {
-                      'doctemail':
-                          '${appointmentControl.argumentData[1]['email']}'
-                    },
-                    {
-                      'doctname':
-                          '${appointmentControl.argumentData[2]['name']}'
-                    }
-                  ]);
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: ColorConstraints.primarycolor,
-                ),
-                child: Text("Fix Appointment"),
-              ),
-            ),
-          ],
-        ),
-      ),
+      // bottomNavigationBar: Container(
+      //   padding: EdgeInsets.only(
+      //     top: 10.sp,
+      //     bottom: 10.sp,
+      //     right: 10.sp,
+      //     left: 10.sp,
+      //   ),
+      //   decoration: BoxDecoration(
+      //     color: ColorConstraints.white,
+      //     boxShadow: [
+      //       BoxShadow(
+      //         color: Colors.grey.withOpacity(0.3),
+      //         spreadRadius: 5,
+      //         blurRadius: 7,
+      //         offset: Offset(0, 3), // changes position of shadow
+      //       ),
+      //     ],
+      //   ),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //     // mainAxisSize: MainAxisSize.min,
+      //     children: [
+      //       Padding(
+      //         padding: const EdgeInsets.only(left: 8.0),
+      //         child: Text(
+      //           "Rs 3000",
+      //           style: TextStyle(
+      //             fontSize: 22.sp,
+      //             fontWeight: FontWeight.w900,
+      //             color: ColorConstraints.primarycolor,
+      //           ),
+      //         ),
+      //       ),
+      //       Container(
+      //         width: MediaQuery.of(context).size.width * 0.45,
+      //         child: ElevatedButton(
+      //           onPressed: () {
+      //             Get.toNamed(AppRoutes.fixappointment, arguments: [
+      //               {
+      //                 'profileimagedocts':
+      //                     '${appointmentControl.argumentData[0]['imagelink']}'
+      //               },
+      //               {
+      //                 'doctemail':
+      //                     '${appointmentControl.argumentData[1]['email']}'
+      //               },
+      //               {
+      //                 'doctname':
+      //                     '${appointmentControl.argumentData[2]['name']}'
+      //               }
+      //             ]);
+      //           },
+      //           style: ElevatedButton.styleFrom(
+      //             primary: ColorConstraints.primarycolor,
+      //           ),
+      //           child: Text("Fix Appointment"),
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

@@ -51,6 +51,8 @@ class FixAppointmentController extends GetxController with MainController {
       'appointment_time': time,
       'doctor_email': argumentData[1]['doctemail'],
       'doctor_name': argumentData[2]['doctname'],
+      'doctor_cat': 'doctor_cat',
+      'doctor_profile': ''
     });
   }
 }

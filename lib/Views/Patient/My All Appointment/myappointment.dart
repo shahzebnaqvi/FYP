@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:medicalapp/Components/buttons_widget.dart';
+import 'package:medicalapp/Components/doctorlist_widget.dart';
 import 'package:medicalapp/Components/heading_row_wiget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
 import 'package:medicalapp/Routes/routes.dart';
@@ -27,10 +29,29 @@ class MyDoctorAppointments extends StatelessWidget {
               builder: (contexta) {
                 return ListView(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10.sp),
-                      child: HeadingRowhead(
-                        headingtext: "Appointments",
+                    Container(
+                      margin: EdgeInsets.only(top: 15.sp, bottom: 20.sp),
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: 50.sp,
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: Custombuttonbacknopad(
+                              ontapaction: () {},
+                              buttontext: "Upcoming",
+                            ),
+                          ),
+                          Container(
+                            height: 50.sp,
+                            width: MediaQuery.of(context).size.width * 0.45,
+                            child: Custombuttonbacknopad(
+                              ontapaction: () {},
+                              buttontext: "Post",
+                            ),
+                          )
+                        ],
                       ),
                     ),
                     StreamBuilder<QuerySnapshot>(
@@ -57,33 +78,61 @@ class MyDoctorAppointments extends StatelessWidget {
                               Map<String, dynamic> data =
                                   document.data()! as Map<String, dynamic>;
                               return InkWell(
-                                onTap: () {
-                                  Get.toNamed(AppRoutes.myAppointmentdetail,
-                                      arguments: [
-                                        {
-                                          "imagelink": '${data['profile']}',
-                                          "doctor_name":
-                                              '${data['doctor_name']}',
-                                          "doctor_email":
-                                              '${data['doctor_email']}',
-                                          "patient_email":
-                                              '${data['patient_email']}',
-                                          "patient_name":
-                                              '${data['patient_name']}',
-                                          "appointment_time":
-                                              '${data['appointment_time']}',
-                                          "date":
-                                              '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
-                                        }
-                                      ]);
-                                },
-                                child: Appointmentlistcomp(
-                                    imagelink: '${data['profile']}',
-                                    doctname: '${data['doctor_name']}',
-                                    doctcat: '${data['appointment_time']}',
-                                    date:
-                                        '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}'),
-                              );
+                                  onTap: () {
+                                    Get.toNamed(AppRoutes.myAppointmentdetail,
+                                        arguments: [
+                                          {
+                                            "imagelink": '${data['profile']}',
+                                            "doctor_name":
+                                                '${data['doctor_name']}',
+                                            "doctor_email":
+                                                '${data['doctor_email']}',
+                                            "patient_email":
+                                                '${data['patient_email']}',
+                                            "patient_name":
+                                                '${data['patient_name']}',
+                                            "appointment_time":
+                                                '${data['appointment_time']}',
+                                            "date":
+                                                '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
+                                          }
+                                        ]);
+                                  },
+                                  child: DoctorWidgetAppointments(
+                                      imagelink: "${data['doctor_profile']}",
+                                      doctname: "${data['doctor_name']}",
+                                      doctcat: '${data['doctor_cat']}',
+                                      doctdate:
+                                          "${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}",
+                                      OnTapbutton: () {
+                                        Get.toNamed(
+                                            AppRoutes.myAppointmentdetail,
+                                            arguments: [
+                                              {
+                                                "imagelink":
+                                                    '${data['profile']}',
+                                                "doctor_name":
+                                                    '${data['doctor_name']}',
+                                                "doctor_email":
+                                                    '${data['doctor_email']}',
+                                                "patient_email":
+                                                    '${data['patient_email']}',
+                                                "patient_name":
+                                                    '${data['patient_name']}',
+                                                "appointment_time":
+                                                    '${data['appointment_time']}',
+                                                "date":
+                                                    '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
+                                              }
+                                            ]);
+                                      })
+                                  //  Appointmentlistcomp(
+                                  //     imagelink: '${data['profile']}',
+                                  //     doctname: '${data['doctor_name']}',
+                                  //     doctcat: '${data['appointment_time']}',
+                                  //     date:
+                                  //         '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}'),
+                                  );
                             }).toList(),
                           );
                         }),

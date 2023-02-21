@@ -252,6 +252,10 @@ class AllDoctorScreen extends StatelessWidget {
                                                               {
                                                                 'name':
                                                                     '${data['username']}'
+                                                              },
+                                                              {
+                                                                'cat':
+                                                                    '${data['field']}'
                                                               }
                                                             ]);
                                                       },
