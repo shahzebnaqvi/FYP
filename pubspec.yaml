@@ -55,6 +55,8 @@ dependencies:
   time_range_picker: ^2.2.0
   calendar_timeline: ^1.1.0
   get_storage: ^2.0.3
+  flutter_blue: ^0.8.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

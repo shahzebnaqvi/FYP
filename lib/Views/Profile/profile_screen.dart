@@ -11,6 +11,7 @@ import 'package:medicalapp/Controllers/ProfileControllers/profile_controller.dar
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
 import 'package:medicalapp/Views/Home%20Dashboard/home_dashboard_screen.dart';
+import 'package:medicalapp/Views/Patient/Connect%20Device/connect_device_bluetooth.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -188,39 +189,44 @@ class ProfileScreen extends StatelessWidget {
                       )
                     ]),
               ),
-              Container(
-                margin:
-                    EdgeInsets.all(MediaQuery.of(context).size.width * 0.07),
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  // color: primaryColor,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(16.0),
+              GestureDetector(
+                onTap: () {
+                  Get.to(ConnectDevice());
+                },
+                child: Container(
+                  margin:
+                      EdgeInsets.all(MediaQuery.of(context).size.width * 0.07),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    // color: primaryColor,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(16.0),
+                    ),
+                    border: Border.all(
+                        width: 2,
+                        color: ColorConstraints
+                            .primarycolor //                   <--- border width here
+                        ),
                   ),
-                  border: Border.all(
-                      width: 2,
-                      color: ColorConstraints
-                          .primarycolor //                   <--- border width here
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Image(
+                        image: AssetImage(
+                          "assets/images/Devices.png",
+                        ),
+                        // width: 80,
                       ),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image(
-                      image: AssetImage(
-                        "assets/images/Devices.png",
+                      Text(
+                        "Connect a Device",
+                        style: TextStyle(color: ColorConstraints.primarycolor),
                       ),
-                      // width: 80,
-                    ),
-                    Text(
-                      "Connect a Device",
-                      style: TextStyle(color: ColorConstraints.primarycolor),
-                    ),
-                    Icon(
-                      Icons.bluetooth,
-                      color: ColorConstraints.primarycolor,
-                    ),
-                  ],
+                      Icon(
+                        Icons.bluetooth,
+                        color: ColorConstraints.primarycolor,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               optionprofile("assets/images/line-graph.png", "Latest Graphs"),
