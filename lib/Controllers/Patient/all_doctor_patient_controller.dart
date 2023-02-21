@@ -10,20 +10,17 @@ import 'package:medicalapp/Helper/storage_helper.dart';
 
 class AllDoctorPatientController extends GetxController with MainController {
   var listcat = [
-    "Select",
-    "Family physicians",
-    "Internists",
-    "Emergency physicians",
-    "Psychiatrists",
-    "Obstetricians and gynecologists",
-    "Neurologists",
+    "All",
     "Radiologists",
-    "Anesthesiologists"
+    "Neurologists",
+    "Psychiatrists",
+    "Pediatrician"
   ];
+
   var selectedcat = '';
   selectcatfunc(valuecat) {
     selectedcat = valuecat;
-    if (selectedcat == "Select") {
+    if (selectedcat == "All") {
       selectedcat = '';
     }
     update();

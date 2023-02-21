@@ -167,15 +167,10 @@ class RegisterScreen extends StatelessWidget {
                             () => AppDropdownInput(
                               hintText: registerController.fielddoctor.value,
                               options: [
-                                "Select",
-                                "Family physicians",
-                                "Internists",
-                                "Emergency physicians",
-                                "Psychiatrists",
-                                "Obstetricians and gynecologists",
-                                "Neurologists",
                                 "Radiologists",
-                                "Anesthesiologists"
+                                "Neurologists",
+                                "Psychiatrists",
+                                "Pediatrician"
                               ],
                               value:
                                   // "General Question",

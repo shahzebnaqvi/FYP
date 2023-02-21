@@ -160,11 +160,7 @@ class HomeScreenBody extends StatelessWidget {
     return Obx(
       (() => Scaffold(
             backgroundColor: ColorConstraints.backgroundcolor,
-            appBar:
-                //  bottomcontroller.selectedIndex.value != 0
-                // ? null
-                // :
-                AppBar(
+            appBar: AppBar(
               backgroundColor: Colors.transparent,
               centerTitle: true,
               title: Image.asset(

@@ -13,11 +13,12 @@ import 'package:medicalapp/Components/doctorlist_widget.dart';
 
 class AllDoctorScreen extends StatelessWidget {
   AllDoctorScreen({super.key});
-  AllDoctorPatientController allDoctorPatientControl =
-      Get.put(AllDoctorPatientController());
 
   @override
   Widget build(BuildContext context) {
+    AllDoctorPatientController allDoctorPatientControl =
+        Get.put(AllDoctorPatientController());
+
     return Scaffold(
       // appBar: AppBar(),
       body: GetBuilder(
@@ -28,7 +29,7 @@ class AllDoctorScreen extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(left: 10.sp),
                   child: HeadingRowhead(
-                    headingtext: "Doctors",
+                    headingtext: "Consult Doctor",
                   ),
                 ),
                 Container(
@@ -44,29 +45,54 @@ class AllDoctorScreen extends StatelessWidget {
                             child: Container(
                               padding: EdgeInsets.all(10.sp),
                               margin: EdgeInsets.all(10.sp),
-                              decoration: BoxDecoration(
-                                color: "${allDoctorPatientControl.listcat[index]}" ==
-                                        "${allDoctorPatientControl.selectedcat}"
-                                    ? ColorConstraints.primarycolor
-                                    : ColorConstraints.secondarycolor,
-                                border:
-                                    Border.all(width: 0, color: Colors.white),
-                                borderRadius: BorderRadius.circular(5),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.03),
-                                    spreadRadius: 5,
-                                    blurRadius: 10,
-                                    offset: Offset(
-                                        0, 3), // changes position of shadow
-                                  ),
-                                ],
-                              ),
+                              decoration:
+                                  "${allDoctorPatientControl.listcat[index]}" ==
+                                          "${allDoctorPatientControl.selectedcat}"
+                                      ? BoxDecoration(
+                                          color: ColorConstraints.primarycolor,
+                                          border: Border.all(
+                                              width: 0, color: Colors.white),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.03),
+                                              spreadRadius: 5,
+                                              blurRadius: 10,
+                                              offset: Offset(0,
+                                                  3), // changes position of shadow
+                                            ),
+                                          ],
+                                        )
+                                      : BoxDecoration(
+                                          color: ColorConstraints.white,
+                                          border: Border.all(
+                                              width: 0,
+                                              color: ColorConstraints.primary2),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.03),
+                                              spreadRadius: 5,
+                                              blurRadius: 10,
+                                              offset: Offset(0,
+                                                  3), // changes position of shadow
+                                            ),
+                                          ],
+                                        ),
                               child: Text(
                                 "${allDoctorPatientControl.listcat[index]}",
-                                style: TextStyle(
-                                  color: ColorConstraints.white,
-                                ),
+                                style: "${allDoctorPatientControl.listcat[index]}" ==
+                                        "${allDoctorPatientControl.selectedcat}"
+                                    ? TextStyle(
+                                        color: ColorConstraints.white,
+                                      )
+                                    : TextStyle(
+                                        color: ColorConstraints.primary2,
+                                      ),
                               ),
                             ),
                           ))),
@@ -179,12 +205,12 @@ class AllDoctorScreen extends StatelessWidget {
                                                   subtitle: Text(
                                                       '${data['field']}',
                                                       style: TextStyle(
-                                                          fontSize: 12.sp,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color:
-                                                              ColorConstraints
-                                                                  .greylight)),
+                                                        fontSize: 12.sp,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color:
+                                                            Color(0xff7F8E9D),
+                                                      )),
                                                 ),
                                                 SizedBox(
                                                   height: 15.sp,
@@ -192,12 +218,12 @@ class AllDoctorScreen extends StatelessWidget {
                                                 Text(
                                                     'Doctor Ruslan is an expert in skin and other Doctor Ruslan is an expert in skin and other Doctor Ruslan is an expert in skin and other',
                                                     style: TextStyle(
-                                                        height: 1.sp,
-                                                        fontSize: 16.sp,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: ColorConstraints
-                                                            .greylight)),
+                                                      height: 1.5.sp,
+                                                      fontSize: 16.sp,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Color(0xff7F8E9D),
+                                                    )),
                                                 SizedBox(
                                                   height: 25.sp,
                                                 ),
