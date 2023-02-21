@@ -49,8 +49,8 @@ class AppointmentController extends GetxController with MainController {
       'patient_profile': BaseStorage.storage.read("profile"),
       'appointment_date': date,
       'appointment_time': time,
-      'doctor_email': argumentData[1]['doctemail'],
-      'doctor_name': argumentData[2]['doctname'],
+      'doctor_email': argumentData[1]['email'],
+      'doctor_name': argumentData[2]['name'],
       'doctor_cat': argumentData[3]['cat'],
       'doctor_profile': argumentData[0]['imagelink']
     });
