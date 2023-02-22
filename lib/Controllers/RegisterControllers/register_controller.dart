@@ -14,7 +14,7 @@ class RegisterController extends GetxController with MainController {
   TextEditingController remail = TextEditingController();
   TextEditingController rcemail = TextEditingController();
   TextEditingController rpassword = TextEditingController();
-  var fielddoctor = 'Select'.obs;
+  var fielddoctor = 'Radiologists'.obs;
   var loading = false;
 
   changefielddoctor(value) {

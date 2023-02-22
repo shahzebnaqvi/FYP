@@ -7,7 +7,7 @@ import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
-import 'package:medicalapp/Views/Home Dashboard/home_dashboard_screen.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 
 int _curr = 0;
 var _list2 = [1, 2, 3];
@@ -233,9 +233,13 @@ void goToHome(BuildContext context) {
     Get.offAllNamed(
       AppRoutes.doctororpatient,
     );
-  } else {
+  } else if (BaseStorage.storage.read('type') == "Patient") {
     Get.offAllNamed(
       AppRoutes.homeDashboardScreen,
+    );
+  } else if (BaseStorage.storage.read('type') == "Doctor") {
+    Get.offAllNamed(
+      AppRoutes.homedashboardDoctor,
     );
   }
 }

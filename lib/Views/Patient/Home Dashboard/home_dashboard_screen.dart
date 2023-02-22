@@ -9,7 +9,7 @@ import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
-import 'package:medicalapp/Views/Home%20Dashboard/bottombar.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/bottombar.dart';
 
 final ZoomDrawerController za = ZoomDrawerController();
 

@@ -8,7 +8,7 @@ import 'package:medicalapp/Utils/file_contraints.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:medicalapp/Views/Home%20Dashboard/home_dashboard_screen.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 
 class DoctorOrPatient extends StatelessWidget {
   DoctorOrPatient({super.key});

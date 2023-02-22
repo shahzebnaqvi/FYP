@@ -10,7 +10,7 @@ import 'package:medicalapp/Components/textcomponents.dart';
 import 'package:medicalapp/Controllers/ProfileControllers/profile_controller.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
-import 'package:medicalapp/Views/Home%20Dashboard/home_dashboard_screen.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 import 'package:medicalapp/Views/Patient/Connect%20Device/connect_device_bluetooth.dart';
 
 class ProfileScreen extends StatelessWidget {

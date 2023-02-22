@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
 
-import '../../Controllers/bottom_bar_controller.dart';
+import '../../../Controllers/bottom_bar_controller.dart';
 
 class Bottomnavbar extends StatelessWidget {
   Bottomnavbar({super.key});

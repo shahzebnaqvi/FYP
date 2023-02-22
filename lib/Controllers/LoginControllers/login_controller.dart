@@ -7,8 +7,9 @@ import 'package:get/get.dart';
 import 'package:get/get.dart';
 import 'package:medicalapp/Controllers/main_controller.dart';
 import 'package:medicalapp/Services/constant_storage.dart';
-import 'package:medicalapp/Views/Home%20Dashboard/home_dashboard_screen.dart';
-import 'package:medicalapp/Views/Home%20Dashboard/home_screen.dart';
+import 'package:medicalapp/Views/Doctor/Home%20Dashboard/home_dashboard.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
+import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_screen.dart';
 
 class LoginController extends GetxController with MainController {
   TextEditingController semail = TextEditingController();
@@ -75,7 +76,7 @@ class LoginController extends GetxController with MainController {
       if (BaseStorage.storage.read("type") == "Patient") {
         Get.offAll(HomeDashboardScreen());
       } else if (BaseStorage.storage.read("type") == "Doctor") {
-        Get.offAll(HomeDashboardScreen());
+        Get.offAll(HomeDashboardDoctor());
       } else {}
       loading = false;
       update();
