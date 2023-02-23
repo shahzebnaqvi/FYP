@@ -9,6 +9,7 @@ import 'package:medicalapp/Components/doctorlist_widget.dart';
 import 'package:medicalapp/Components/heading_row_wiget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
 import 'package:medicalapp/Routes/routes.dart';
+import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:intl/intl.dart';
 
@@ -58,7 +59,8 @@ class MyDoctorAppointments extends StatelessWidget {
                         stream: FirebaseFirestore.instance
                             .collection('appointments')
                             .where('patient_email',
-                                isEqualTo: 'shahzeb@gmail.com')
+                                isEqualTo:
+                                    '${BaseStorage.storage.read("email")}')
                             // .orderBy('datecreation', descending: true)
                             .snapshots(),
                         builder: (BuildContext context,
