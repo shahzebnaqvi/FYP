@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -8,6 +10,7 @@ import 'package:medicalapp/Controllers/Patient/appointment_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
+import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/Patient/Appointment/appointment_comp.dart';
 import 'package:medicalapp/Views/Patient/Appointment/fix_appointment_screen.dart';
 
@@ -19,105 +22,48 @@ class AppointmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text("Profile Doctor"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Center(
-              child: Stack(
+            Container(
+              decoration: BoxDecoration(
+                color: ColorConstraints.primarycolor,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20.sp),
+                    bottomRight: Radius.circular(20.sp)),
+              ),
+              child: Column(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: NetworkImage(appointmentControl
-                                .argumentData[0]['imagelink']),
-                            fit: BoxFit.cover)),
+                  SizedBox(
+                    height: 30.sp,
                   ),
-                  Positioned(
-                    top: 30,
-                    child: Container(
-                      width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.all(20.sp),
-                      child: Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            icon: Icon(
-                              Icons.arrow_back_ios,
-                              color: ColorConstraints.white,
-                            ),
-                          ),
-                          Text(""),
-                        ],
-                      ),
+                  ListTile(
+                    leading: CircleAvatar(
+                        radius: 50.sp,
+                        backgroundImage: NetworkImage(
+                            appointmentControl.argumentData[0]['imagelink'])),
+                    title: Text(
+                      "Dr ${appointmentControl.argumentData[2]['name']}",
+                      style: TextStyle(
+                          color: ColorConstraints.white,
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    subtitle: Text(
+                      "${appointmentControl.argumentData[3]['cat']}",
+                      style: TextStyle(
+                          color: ColorConstraints.white,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.w400),
                     ),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: ColorConstraints.white,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(40.sp),
-                            topRight: Radius.circular(40.sp)),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      height: 60.sp,
-                    ),
+                  SizedBox(
+                    height: 20.sp,
                   ),
-                  Positioned(
-                    right: 30.sp,
-                    left: 30.sp,
-                    bottom: 20.sp,
-                    child: Center(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            // to make elevation
-                            BoxShadow(
-                              color: Colors.black45,
-                              offset: Offset(2, 2),
-                              blurRadius: 4,
-                            ),
-                          ],
-                          color: ColorConstraints.secondarycolor,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(50.sp),
-                            topRight: Radius.circular(50.sp),
-                            bottomLeft: Radius.circular(50.sp),
-                            bottomRight: Radius.circular(50.sp),
-                          ),
-                        ),
-                        width: MediaQuery.of(context).size.width * 0.9,
-                        height: 90.sp,
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                "Dr shahzeb",
-                                style: TextStyle(
-                                  fontSize: 22.sp,
-                                  fontWeight: FontWeight.w900,
-                                  color: ColorConstraints.white,
-                                ),
-                              ),
-                              Text(
-                                "Dr ${appointmentControl.argumentData[1]['email']}",
-                                style: TextStyle(
-                                  fontSize: 14.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color: ColorConstraints.white,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
@@ -127,51 +73,64 @@ class AppointmentScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    SizedBox(
+                      height: 30.sp,
+                    ),
                     Text(
-                      "About",
+                      "Info",
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w900,
                         color: ColorConstraints.primarycolor,
                       ),
                     ),
-                    Text(
-                      "lofrem asnia ndaiiaiajsa iasjisjiiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasij",
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w400,
-                        color: ColorConstraints.primarycolor,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        icontext(FileConstraints.myappointment, "4 Years"),
+                        icontext(FileConstraints.myappointment, "cleve Clinic")
+                      ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DoctorFeatures(
-                            featuretext: "Patient",
-                            featureicon: "400",
-                            featurecolor: ColorConstraints.secondarycolor),
-                        DoctorFeatures(
-                            featuretext: "Year Exp",
-                            featureicon: "4",
-                            featurecolor: ColorConstraints.secondarycolor),
-                        DoctorFeatures(
-                            featuretext: "Rating",
-                            featureicon: "6",
-                            featurecolor: ColorConstraints.secondarycolor),
-                        DoctorFeatures(
-                            featuretext: "Rating",
-                            featureicon: "6",
-                            featurecolor: ColorConstraints.secondarycolor),
+                        icontext(
+                            FileConstraints.myappointment, "Havard University"),
+                        icontext(FileConstraints.myappointment, "USA")
                       ],
                     ),
                     SizedBox(
                       height: 20.sp,
                     ),
                     Text(
+                      "Overview",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w900,
+                        color: ColorConstraints.primarycolor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 10.sp,
+                    ),
+                    Text(
+                      textAlign: TextAlign.justify,
+                      "lofrem asnia ndaiiaiajsa frem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasijlofrem asnia ndaiiaiajsa iasjisji iasij",
+                      style: TextStyle(
+                        height: 1.2,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w400,
+                        color: ColorConstraints.primarycolor,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30.sp,
+                    ),
+                    Text(
                       "Schedule",
                       style: TextStyle(
                         fontSize: 16.sp,
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w900,
                         color: ColorConstraints.primarycolor,
                       ),
                     ),
@@ -189,7 +148,7 @@ class AppointmentScreen extends StatelessWidget {
                       monthColor: Colors.blueGrey,
                       dayColor: ColorConstraints.secondarycolor,
                       activeDayColor: Colors.white,
-                      activeBackgroundDayColor: ColorConstraints.primarycolor,
+                      activeBackgroundDayColor: ColorConstraints.secondarycolor,
                       dotsColor: Color(0xFF333A47),
                       selectableDayPredicate: (date) {
                         // fixappointmentControl.selectdate(date);
@@ -295,4 +254,16 @@ class AppointmentScreen extends StatelessWidget {
       // ),
     );
   }
+}
+
+Widget icontext(iconname, textname) {
+  return Row(
+    children: [
+      Image.asset(iconname),
+      SizedBox(
+        width: 5.sp,
+      ),
+      Text(textname)
+    ],
+  );
 }

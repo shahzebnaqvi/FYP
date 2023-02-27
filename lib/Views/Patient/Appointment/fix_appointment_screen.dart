@@ -33,9 +33,6 @@ class FixAppointment extends StatelessWidget {
                 ),
                 CircleAvatar(
                   radius: 50.sp,
-                  // backgroundImage: NetworkImage(
-                  //   data[0]['profileimagedocts'],
-                  // ),
                 ),
                 Text(
                   "Dr shahzeb",

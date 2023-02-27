@@ -8,6 +8,7 @@ import 'package:medicalapp/Components/heading_widget.dart';
 import 'package:medicalapp/Components/listtile_component_page.dart';
 import 'package:medicalapp/Components/textcomponents.dart';
 import 'package:medicalapp/Controllers/ProfileControllers/profile_controller.dart';
+import 'package:medicalapp/Controllers/bottom_bar_controller.dart';
 import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
@@ -71,12 +72,15 @@ class ProfileScreen extends StatelessWidget {
                     },
                     child: optionprofile(
                         FileConstraints.connectdevice, "Connect devices")),
-                GestureDetector(
-                    onTap: () {
-                      Get.to(ConnectDevice());
-                    },
-                    child: optionprofile(
-                        FileConstraints.myappointment, "My appointments")),
+                GetBuilder<BottombarController>(
+                    id: '21', // here
+                    init: BottombarController(),
+                    builder: (value) => GestureDetector(
+                        onTap: () {
+                          value.onItemTapped(1);
+                        },
+                        child: optionprofile(
+                            FileConstraints.myappointment, "My appointments"))),
                 GestureDetector(
                     onTap: () {
                       Get.to(ConnectDevice());
