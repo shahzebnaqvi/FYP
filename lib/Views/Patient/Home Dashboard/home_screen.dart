@@ -126,7 +126,7 @@ class HomeScreen extends StatelessWidget {
           StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('user_detail')
-                  // .where("gender",)
+                  .where('status', isEqualTo: true)
                   .where('type', isEqualTo: 'Doctor')
                   .limit(3)
                   // .orderBy('datecreation', descending: true)
@@ -157,7 +157,8 @@ class HomeScreen extends StatelessWidget {
                                 arguments: [
                                   {"imagelink": '${data['profile']}'},
                                   {"email": '${data['email']}'},
-                                  {'name': '${data['username']}'}
+                                  {'name': '${data['username']}'},
+                                  {'cat': '${data['field']}'}
                                 ]);
                           }),
                     );

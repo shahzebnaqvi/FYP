@@ -101,15 +101,14 @@ class AllDoctorScreen extends StatelessWidget {
                     stream: "${allDoctorPatientControl.selectedcat}" == ''
                         ? FirebaseFirestore.instance
                             .collection('user_detail')
-                            // .where("gender",)
+                            .where('status', isEqualTo: true)
                             .where('type', isEqualTo: 'Doctor')
-
-                            // .orderBy('datecreation', descending: true)
                             .snapshots()
                         : FirebaseFirestore.instance
                             .collection('user_detail')
                             // .where("gender",)
                             .where('type', isEqualTo: 'Doctor')
+                            .where('status', isEqualTo: true)
                             .where('field',
                                 isEqualTo:
                                     "${allDoctorPatientControl.selectedcat}")

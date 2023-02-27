@@ -16,8 +16,8 @@ class DoctorDetailController extends GetxController with MainController {
   void initState() {
     // Load the doctor details from Firestore when the widget is created
     FirebaseFirestore.instance
-        .collection("${BaseStorage.storage.read("email")}")
-        .doc('details')
+        .collection("doctordetails")
+        .doc('${BaseStorage.storage.read("email")}')
         .get()
         .then((doc) {
       if (doc.exists) {
@@ -28,6 +28,7 @@ class DoctorDetailController extends GetxController with MainController {
         education.text = data['education'];
         location.text = data['location'];
         info.text = data['info'];
+        update();
       }
     });
   }

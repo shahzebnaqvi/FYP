@@ -15,10 +15,39 @@ class AppointmentController extends GetxController with MainController {
       "${DateTime.now().hour} : ${DateTime.now().minute} ${DateTime.now().hour < 12 ? 'AM' : 'PM'}";
   TimeOfDay selectedtime = TimeOfDay(hour: 7, minute: 15);
   var date = DateTime.now();
+  var experience = '';
+  var hospital = "";
+  var education = '';
+  var location = '';
+  var info = '';
   void onInit() {
     argumentData = Get.arguments;
     print(argumentData);
     super.onInit();
+
+    print("testing");
+    print("${argumentData[1]['email']}");
+
+    // FirebaseFirestore.instance
+    //     .collection("${argumentData[1]['email']}")
+
+    FirebaseFirestore.instance
+        .collection("doctordetails")
+        .doc('${argumentData[1]['email']}')
+        .get()
+        .then((doc) {
+      if (doc.exists) {
+        Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+        experience = data['experience'];
+        hospital = data['hospital'];
+        education = data['education'];
+        location = data['location'];
+        info = data['info'];
+        update();
+      }
+    });
+    print(info);
+    update();
   }
 
   selectTime(BuildContext context) async {
