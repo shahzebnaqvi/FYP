@@ -77,7 +77,7 @@ class RegisterController extends GetxController with MainController {
             'email': emailAddress,
             'username': name,
             'password': password,
-            'profile': value1
+            'profile': value1, 'status': false
             // "profile/" + emailAddress + "/" + results.files.single.name
           });
           Get.snackbar('Account Created', 'Account Created');

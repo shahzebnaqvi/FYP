@@ -16,6 +16,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medicalapp/Components/doctorlist_widget.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:intl/intl.dart';
+import 'package:medicalapp/Views/Doctor/DoctorDetails/doctor_details_Add_screen.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_screen.dart';
 
 class HomeDashboardDoctor extends StatelessWidget {
@@ -54,6 +55,26 @@ class HomeDashboardDoctor extends StatelessWidget {
                       )
                     ],
                   )),
+            ),
+            Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                child: Row(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: 30.sp,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            Get.to(DoctorDetailAddScreen());
+                          },
+                          child: Text(
+                            "Add Details",
+                          )),
+                    ),
+                  ],
+                ),
+              ),
             ),
             SizedBox(
               height: 40.sp,
