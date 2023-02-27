@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:animation_wrappers/animation_wrappers.dart';
@@ -129,6 +128,7 @@ class HomeScreen extends StatelessWidget {
                   .collection('user_detail')
                   // .where("gender",)
                   .where('type', isEqualTo: 'Doctor')
+                  .limit(3)
                   // .orderBy('datecreation', descending: true)
                   .snapshots(),
               builder: (BuildContext context,
@@ -164,60 +164,60 @@ class HomeScreen extends StatelessWidget {
                   }).toList(),
                 );
               }),
-          HeadingRowhead(
-            headingtext: "AI Models Prediction",
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
-            width: MediaQuery.of(context).size.width * 0.9,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                PredictionButton(
-                    imagelink: FileConstraints.neoanalysis,
-                    heading: "Neo Analysis",
-                    OnTapbutton: () {
-                      Get.to(() => NeoAnalysis());
-                    }),
-                PredictionButton(
-                    imagelink: FileConstraints.videovital,
-                    heading: "Video Vitals",
-                    OnTapbutton: () {
-                      Get.to(() => VideoVitalScreen());
-                    }),
-                PredictionButton(
-                    imagelink: "assets/images/microscope.png",
-                    heading: "Brain Tumour",
-                    OnTapbutton: () {})
-              ],
-            ),
-          ),
-          HeadingRowhead(
-            headingtext: "Other Tools",
-          ),
-          GridView.builder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            itemCount: Additionaltitle.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisExtent: MediaQuery.of(context).size.width * 0.3,
-                crossAxisCount: 4),
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Additionalnav[index]),
-                  );
-                },
-                child: Container(
-                    margin: EdgeInsets.all(2),
-                    child: containericonsmall(context, Additionalicon[index],
-                        Additionaltitle[index], Colors.white)),
-              );
-            },
-          ),
+          // HeadingRowhead(
+          //   headingtext: "AI Models Prediction",
+          // ),
+          // Container(
+          //   padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
+          //   width: MediaQuery.of(context).size.width * 0.9,
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       PredictionButton(
+          //           imagelink: FileConstraints.neoanalysis,
+          //           heading: "Neo Analysis",
+          //           OnTapbutton: () {
+          //             Get.to(() => NeoAnalysis());
+          //           }),
+          //       PredictionButton(
+          //           imagelink: FileConstraints.videovital,
+          //           heading: "Video Vitals",
+          //           OnTapbutton: () {
+          //             Get.to(() => VideoVitalScreen());
+          //           }),
+          //       PredictionButton(
+          //           imagelink: "assets/images/microscope.png",
+          //           heading: "Brain Tumour",
+          //           OnTapbutton: () {})
+          //     ],
+          //   ),
+          // ),
+          // HeadingRowhead(
+          //   headingtext: "Other Tools",
+          // ),
+          // GridView.builder(
+          //   physics: NeverScrollableScrollPhysics(),
+          //   shrinkWrap: true,
+          //   itemCount: Additionaltitle.length,
+          //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          //       mainAxisExtent: MediaQuery.of(context).size.width * 0.3,
+          //       crossAxisCount: 4),
+          //   itemBuilder: (context, index) {
+          //     return InkWell(
+          //       onTap: () {
+          //         Navigator.push(
+          //           context,
+          //           MaterialPageRoute(
+          //               builder: (context) => Additionalnav[index]),
+          //         );
+          //       },
+          //       child: Container(
+          //           margin: EdgeInsets.all(2),
+          //           child: containericonsmall(context, Additionalicon[index],
+          //               Additionaltitle[index], Colors.white)),
+          //     );
+          //   },
+          // ),
         ],
       ),
     ));

@@ -6,6 +6,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:get/get.dart';
 import 'package:medicalapp/Api/neo_analysis_api_post.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
@@ -35,9 +36,14 @@ class _NeoAnalysisState extends State<NeoAnalysis> {
           ),
           width: 80,
         ),
-        leading: Icon(
-          Icons.arrow_back_ios_new_outlined,
-          color: ColorConstraints.primarycolor,
+        leading: GestureDetector(
+          onTap: () {
+            Get.back();
+          },
+          child: Icon(
+            Icons.arrow_back_ios_new_outlined,
+            color: ColorConstraints.primarycolor,
+          ),
         ),
         // backgroundColor: Colors.transparent,
       ),
@@ -160,7 +166,7 @@ class _NeoAnalysisState extends State<NeoAnalysis> {
                     borderRadius: new BorderRadius.all(
                       Radius.circular(10.0),
                     ),
-                    color: Color(0Xff707070),
+                    color: ColorConstraints.primary2,
                   ),
                   padding:
                       EdgeInsets.only(top: 20, bottom: 20, right: 40, left: 40),
@@ -175,10 +181,9 @@ class _NeoAnalysisState extends State<NeoAnalysis> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          "25",
+                          " $output",
                           style: TextStyle(
-                              color: ColorConstraints.primarycolor,
-                              fontSize: 18),
+                              color: ColorConstraints.white, fontSize: 18),
                         ),
                       ),
                     ],

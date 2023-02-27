@@ -85,10 +85,11 @@ class HomeDashboardScreen extends StatelessWidget {
                 SizedBox(height: 50.h),
                 ListTile(
                   leading: CircleAvatar(
-                    child: Image.asset(FileConstraints.logo1),
+                    backgroundImage:
+                        NetworkImage("${BaseStorage.storage.read("profile")}"),
                   ),
                   title: Text(
-                    "Guest",
+                    "${BaseStorage.storage.read("username")}",
                     style:
                         TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600),
                   ),

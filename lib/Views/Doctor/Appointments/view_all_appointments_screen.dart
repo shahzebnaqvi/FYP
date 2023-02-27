@@ -23,13 +23,15 @@ class ViewAllAppointmentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Color(0xff1DC2F8),
+        title: Text("Appointments"),
+      ),
       body: StreamBuilder<QuerySnapshot>(
           stream: FirebaseFirestore.instance
               .collection('appointments')
               .where('doctor_email',
                   isEqualTo: '${BaseStorage.storage.read("email")}')
-              // .orderBy('datecreation', descending: true)
               .snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -60,14 +62,15 @@ class ViewAllAppointmentScreen extends StatelessWidget {
                         }
                       ]);
                     },
-                    child: DoctorWidgetAppointments(
-                        imagelink: "${data['doctor_profile']}",
-                        doctname: "${data['doctor_name']}",
+                    child: DoctorWidgetAppointmentsHome(
+                        docttime: "${data['appointment_time']}",
+                        imagelink: "${data['patient_profile']}",
+                        doctname: "${data['patient_name']}",
                         doctcat: '${data['doctor_cat']}',
                         doctdate:
                             "${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}",
                         OnTapbutton: () {
-                          Get.toNamed(AppRoutes.myAppointmentdetail,
+                          Get.toNamed(AppRoutes.myAppointmentdetaildoct,
                               arguments: [
                                 {
                                   "imagelink": '${data['profile']}',
