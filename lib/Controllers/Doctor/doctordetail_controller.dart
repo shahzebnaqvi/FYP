@@ -13,16 +13,17 @@ class DoctorDetailController extends GetxController with MainController {
   TextEditingController location = TextEditingController();
   TextEditingController info = TextEditingController();
   @override
-  void initState() {
-    // Load the doctor details from Firestore when the widget is created
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
     FirebaseFirestore.instance
         .collection("doctordetails")
-        .doc('${BaseStorage.storage.read("email")}')
+        .doc("${BaseStorage.storage.read("email")}")
         .get()
         .then((doc) {
+      print(doc);
       if (doc.exists) {
         Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
-
         experience.text = data['experience'];
         hospital.text = data['hospital'];
         education.text = data['education'];
@@ -59,5 +60,6 @@ class DoctorDetailController extends GetxController with MainController {
         document.reference.update({'status': true});
       });
     });
+    Get.snackbar('Added', 'Details Added');
   }
 }

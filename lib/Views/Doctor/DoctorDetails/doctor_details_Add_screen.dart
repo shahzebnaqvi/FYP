@@ -10,12 +10,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DoctorDetailAddScreen extends StatelessWidget {
   DoctorDetailAddScreen({super.key});
-  DoctorDetailController doctorDetailControl =
-      Get.put(DoctorDetailController());
+
   final formKeydoctordetail = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    DoctorDetailController doctorDetailControl =
+        Get.put(DoctorDetailController());
     return Scaffold(
       appBar: AppBar(
         title: Text("Doctor Detail"),
@@ -64,7 +65,7 @@ class DoctorDetailAddScreen extends StatelessWidget {
                   LabelWidget(
                     labeltext: "Info*",
                   ),
-                  TextFieldWidget(
+                  TextFieldWidgettextarea(
                       validationfunction: (validate_value) =>
                           doctorDetailControl.validateNull(validate_value),
                       controllertextfield: doctorDetailControl.info,
