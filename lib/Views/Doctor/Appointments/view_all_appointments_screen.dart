@@ -42,8 +42,6 @@ class ViewAllAppointmentScreen extends StatelessWidget {
               return Center(child: Text(""));
             }
             return ListView(
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
                 Map<String, dynamic> data =
                     document.data()! as Map<String, dynamic>;

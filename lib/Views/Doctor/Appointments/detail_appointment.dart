@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'package:medicalapp/Utils/file_contraints.dart';
+import 'package:medicalapp/Views/Doctor/Report/add_report.dart';
 
 class MyAppointmentDetailDoct extends StatelessWidget {
   MyAppointmentDetailDoct({super.key});
@@ -115,6 +116,20 @@ class MyAppointmentDetailDoct extends StatelessWidget {
                                   height: 1,
                                   color:
                                       ColorConstraints.white.withOpacity(0.4),
+                                ),
+                                Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  height: 30.sp,
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                          primary: Color(0xFFFFCA3C)),
+                                      onPressed: () {
+                                        Get.to(AddReportScreen());
+                                      },
+                                      child: Text(
+                                        "Add Report",
+                                      )),
                                 ),
                                 SizedBox(
                                   height: 45.sp,

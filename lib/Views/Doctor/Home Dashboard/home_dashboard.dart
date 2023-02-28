@@ -65,6 +65,8 @@ class HomeDashboardDoctor extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.3,
                       height: 30.sp,
                       child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              primary: Color(0xFFFFCA3C)),
                           onPressed: () {
                             Get.to(DoctorDetailAddScreen());
                           },
@@ -154,7 +156,8 @@ class HomeDashboardDoctor extends StatelessWidget {
                                     doctdate:
                                         "${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}",
                                     OnTapbutton: () {
-                                      Get.toNamed(AppRoutes.myAppointmentdetail,
+                                      Get.toNamed(
+                                          AppRoutes.myAppointmentdetaildoct,
                                           arguments: [
                                             {
                                               "imagelink": '${data['profile']}',
