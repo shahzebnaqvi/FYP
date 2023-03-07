@@ -25,7 +25,7 @@ class ViewAllReportsPatientScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff1DC2F8),
+        backgroundColor: ColorConstraints.primarycolor,
         title: Text("Reports"),
       ),
       body: StreamBuilder<QuerySnapshot>(

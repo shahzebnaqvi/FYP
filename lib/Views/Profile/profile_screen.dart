@@ -15,6 +15,7 @@ import 'package:medicalapp/Utils/file_contraints.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 import 'package:medicalapp/Views/Patient/Connect%20Device/connect_device_bluetooth.dart';
+import 'package:medicalapp/Views/Patient/Report%20Patients/viewall_report_patients.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -60,12 +61,12 @@ class ProfileScreen extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                GestureDetector(
-                    onTap: () {
-                      Get.to(ConnectDevice());
-                    },
-                    child: optionprofile(
-                        FileConstraints.profileedit, "Edit Profile")),
+                // GestureDetector(
+                //     onTap: () {
+                //       Get.to(ConnectDevice());
+                //     },
+                //     child: optionprofile(
+                //         FileConstraints.profileedit, "Edit Profile")),
                 GestureDetector(
                     onTap: () {
                       Get.to(ConnectDevice());
@@ -83,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                             FileConstraints.myappointment, "My appointments"))),
                 GestureDetector(
                     onTap: () {
-                      Get.to(ConnectDevice());
+                      Get.to(ViewAllReportsPatientScreen());
                     },
                     child:
                         optionprofile(FileConstraints.myreport, "My reports")),
