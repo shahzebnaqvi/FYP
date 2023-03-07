@@ -8,6 +8,7 @@ import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screenas_doctor_or_patient.dart';
 import 'package:medicalapp/Views/Doctor/Appointments/detail_appointment.dart';
 import 'package:medicalapp/Views/Doctor/Home%20Dashboard/home_dashboard.dart';
+import 'package:medicalapp/Views/Doctor/Report/add_report.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 import 'package:medicalapp/Views/Onboarding/onboard_screen1.dart';
 import 'package:medicalapp/Views/Patient/Appointment/appointment_screen.dart';
@@ -33,6 +34,7 @@ class AppRoutes {
   static String myAppointmentdetail = '/MyAppointmentDetail';
   static String myAppointmentdetaildoct = '/MyAppointmentDetailDoct';
   static String homedashboardDoctor = '/HomeDashboardDoctor';
+  static String addreportscreen = '/AddReportScreen';
 
   static List<GetPage<dynamic>> routes = [
     GetPage(
@@ -94,6 +96,10 @@ class AppRoutes {
     GetPage(
       name: homedashboardDoctor,
       page: () => HomeDashboardDoctor(),
+    ),
+    GetPage(
+      name: addreportscreen,
+      page: () => AddReportScreen(),
     ),
   ];
 }

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:medicalapp/Components/buttons_widget.dart';
 import 'package:medicalapp/Components/labels_widget.dart';
 import 'package:medicalapp/Components/textfield_widget.dart';
+import 'package:medicalapp/Controllers/Doctor/add_report_controller.dart';
 import 'package:medicalapp/Controllers/Doctor/doctordetail_controller.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,8 +16,7 @@ class AddReportScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DoctorDetailController doctorDetailControl =
-        Get.put(DoctorDetailController());
+    AddReportController doctorDetailControl = Get.put(AddReportController());
     return Scaffold(
       appBar: AppBar(
         title: Text("Add Report Detail"),
@@ -31,45 +31,21 @@ class AddReportScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   LabelWidget(
-                    labeltext: "Year of Experience*",
+                    labeltext: "Disease*",
                   ),
                   TextFieldWidget(
                       validationfunction: (validate_value) =>
                           doctorDetailControl.validateNull(validate_value),
-                      controllertextfield: doctorDetailControl.experience,
-                      hinttextfield: "Year of Experience"),
+                      controllertextfield: doctorDetailControl.disease,
+                      hinttextfield: "Enter Disease"),
                   LabelWidget(
-                    labeltext: "Hospital you are working in*",
-                  ),
-                  TextFieldWidget(
-                      validationfunction: (validate_value) =>
-                          doctorDetailControl.validateNull(validate_value),
-                      controllertextfield: doctorDetailControl.hospital,
-                      hinttextfield: "Hospital you are working in"),
-                  LabelWidget(
-                    labeltext: "University*",
-                  ),
-                  TextFieldWidget(
-                      validationfunction: (validate_value) =>
-                          doctorDetailControl.validateNull(validate_value),
-                      controllertextfield: doctorDetailControl.education,
-                      hinttextfield: "Enter your university"),
-                  LabelWidget(
-                    labeltext: "Location*",
-                  ),
-                  TextFieldWidget(
-                      validationfunction: (validate_value) =>
-                          doctorDetailControl.validateNull(validate_value),
-                      controllertextfield: doctorDetailControl.location,
-                      hinttextfield: "Enter your location"),
-                  LabelWidget(
-                    labeltext: "Info*",
+                    labeltext: "Discription*",
                   ),
                   TextFieldWidgettextarea(
                       validationfunction: (validate_value) =>
                           doctorDetailControl.validateNull(validate_value),
-                      controllertextfield: doctorDetailControl.info,
-                      hinttextfield: "Enter your info"),
+                      controllertextfield: doctorDetailControl.discription,
+                      hinttextfield: "Enter Discription"),
                   SizedBox(
                     height: 20.sp,
                   ),
@@ -79,7 +55,7 @@ class AddReportScreen extends StatelessWidget {
                         doctorDetailControl.adddoctordetails();
                       }
                     },
-                    buttontext: "Add",
+                    buttontext: "Add Report",
                   )
                 ],
               ),

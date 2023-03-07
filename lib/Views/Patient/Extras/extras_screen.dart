@@ -10,6 +10,7 @@ import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
 import 'package:medicalapp/Views/Doctor/Home%20Dashboard/home_dashboard.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:medicalapp/Views/Patient/Report%20Patients/viewall_report_patients.dart';
 
 class ExtrasScreen extends StatelessWidget {
   const ExtrasScreen({super.key});
@@ -47,7 +48,7 @@ class ExtrasScreen extends StatelessWidget {
                             imagelink: FileConstraints.report,
                             heading: "Report",
                             OnTapbutton: () {
-                              Get.to(() => NeoAnalysis());
+                              Get.to(() => ViewAllReportsPatientScreen());
                             }),
                       ])),
               HeadingRowhead(

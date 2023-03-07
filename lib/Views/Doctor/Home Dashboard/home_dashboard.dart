@@ -17,6 +17,7 @@ import 'package:medicalapp/Components/doctorlist_widget.dart';
 import 'package:medicalapp/Routes/routes.dart';
 import 'package:intl/intl.dart';
 import 'package:medicalapp/Views/Doctor/DoctorDetails/doctor_details_Add_screen.dart';
+import 'package:medicalapp/Views/Doctor/Reports/view_all_reports.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_screen.dart';
 
 class HomeDashboardDoctor extends StatelessWidget {
@@ -204,7 +205,7 @@ class HomeDashboardDoctor extends StatelessWidget {
                                 imagelink: FileConstraints.report,
                                 heading: "Report",
                                 OnTapbutton: () {
-                                  Get.to(() => NeoAnalysis());
+                                  Get.to(() => ViewAllReportsScreen());
                                 }),
                           ])),
                   HeadingRowhead(

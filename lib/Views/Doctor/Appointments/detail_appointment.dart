@@ -6,8 +6,8 @@ import 'package:medicalapp/Components/buttons_widget.dart';
 import 'package:medicalapp/Components/heading_widget.dart';
 import 'package:medicalapp/Controllers/Patient/all_doctor_patient_controller.dart';
 import 'package:medicalapp/Controllers/Patient/appointment_detail_controller.dart';
+import 'package:medicalapp/Routes/routes.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
@@ -125,7 +125,15 @@ class MyAppointmentDetailDoct extends StatelessWidget {
                                       style: ElevatedButton.styleFrom(
                                           primary: Color(0xFFFFCA3C)),
                                       onPressed: () {
-                                        Get.to(AddReportScreen());
+                                        Get.toNamed(AppRoutes.addreportscreen,
+                                            arguments: [
+                                              {
+                                                "patemail":
+                                                    "${appointmentdetailControl.argumentData[0]['patient_email']}",
+                                                "patname":
+                                                    "${appointmentdetailControl.argumentData[0]['patient_name']}"
+                                              }
+                                            ]);
                                       },
                                       child: Text(
                                         "Add Report",
