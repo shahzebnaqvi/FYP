@@ -11,6 +11,7 @@ import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
 import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
+import 'package:medicalapp/Views/Additionaltools/ocr_report.dart';
 import 'package:medicalapp/Views/Doctor/Appointments/view_all_appointments_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medicalapp/Components/doctorlist_widget.dart';
@@ -233,7 +234,7 @@ class HomeDashboardDoctor extends StatelessWidget {
                                 imagelink: FileConstraints.ocr,
                                 heading: "OCR Report",
                                 OnTapbutton: () {
-                                  Get.to(() => NeoAnalysis());
+                                  Get.to(() => OCRReportScreen());
                                 }),
                           ])),
                   SizedBox(

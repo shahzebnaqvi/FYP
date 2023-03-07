@@ -8,6 +8,7 @@ import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/AI%20Models/video_vital.dart';
 import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
+import 'package:medicalapp/Views/Additionaltools/ocr_report.dart';
 import 'package:medicalapp/Views/Doctor/Home%20Dashboard/home_dashboard.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:medicalapp/Views/Patient/Report%20Patients/viewall_report_patients.dart';
@@ -76,7 +77,7 @@ class ExtrasScreen extends StatelessWidget {
                             imagelink: FileConstraints.ocr,
                             heading: "OCR Report",
                             OnTapbutton: () {
-                              Get.to(() => NeoAnalysis());
+                              Get.to(() => OCRReportScreen());
                             }),
                       ])),
             ],

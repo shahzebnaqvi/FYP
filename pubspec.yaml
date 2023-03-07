@@ -56,6 +56,8 @@ dependencies:
   calendar_timeline: ^1.1.0
   get_storage: ^2.0.3
   flutter_blue: ^0.8.0
+  ml_kit_ocr: ^0.0.3+1
+  image_picker: ^0.8.6+4
   
 dev_dependencies:
   flutter_test:

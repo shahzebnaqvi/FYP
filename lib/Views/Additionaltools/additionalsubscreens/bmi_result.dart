@@ -82,7 +82,7 @@ class _Bmi_ResultState extends State<Bmi_Result> {
                   ),
                 ),
                 Text(
-                  "sdknkasdmaksmkasmskasmkasmaskmasksamskksamaskasmkasmasksmas kasmskmask nkasksak kajaskj kajsask kakasjkj s",
+                  "",
                   style: TextStyle(),
                   textAlign: TextAlign.center,
                 ),
