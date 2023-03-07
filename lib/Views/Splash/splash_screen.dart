@@ -17,11 +17,11 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage(FileConstraints.backgroundgif),
-              fit: BoxFit.cover),
-        ),
+        decoration: BoxDecoration(color: ColorConstraints.primarycolor
+            // image: DecorationImage(
+            //     image: AssetImage(FileConstraints.backgroundgif),
+            //     fit: BoxFit.cover),
+            ),
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
@@ -38,7 +38,7 @@ class SplashScreen extends StatelessWidget {
                       image: AssetImage(
                         FileConstraints.logo,
                       ),
-                      width: MediaQuery.of(context).size.width * 0.6,
+                      width: MediaQuery.of(context).size.width * 0.8,
                     ),
                   ),
                 ),

@@ -25,18 +25,18 @@ List<Widget> _list = <Widget>[
       backbool: false,
       titletext: "Welcome To\nSehatgah",
       imagename: "${FileConstraints.oboard1}",
-      paratext:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"),
+      paratext: "AI-Powered Doctor Appointment & Report Management App"),
   new PagesOnboard(
       backbool: true,
-      titletext: "OnTap Doctor ",
+      titletext: "Doctor Appointment Management",
       imagename: "${FileConstraints.oboard2}",
-      paratext: "Lorem ipsum dolor sit amet"),
+      paratext:
+          "Schedule appointments, set reminders, and manage your healthcare "),
   new PagesOnboard(
       backbool: true,
-      titletext: "Ready to Medicate?",
+      titletext: "Report Management",
       imagename: "${FileConstraints.oboard3}",
-      paratext: 'Get the Advice on your finger tips'),
+      paratext: 'Easily manage your medical reports, including lab reports'),
 ];
 
 class _OnboardingScreen1State extends State<OnboardingScreen1> {
