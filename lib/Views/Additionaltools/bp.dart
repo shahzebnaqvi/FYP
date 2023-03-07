@@ -11,15 +11,21 @@ class BP extends StatefulWidget {
 }
 
 class _BPState extends State<BP> {
-  String Systollic = "";
-  String Diastoolic = "";
-  String Pulse = "";
+  int systolic = 0;
+  int diastolic = 0;
+  int pulse = 0;
+  TextEditingController _systolicBPController = TextEditingController();
+  TextEditingController _diastolicBPController = TextEditingController();
+  TextEditingController _pulseController = TextEditingController();
+
+  double _result = 0.0;
   @override
   void test() {
     setState(() {
-      Systollic = '121';
-      Diastoolic = '81';
-      Pulse = '24';
+      systolic = int.parse(_systolicBPController.text);
+      diastolic = int.parse(_diastolicBPController.text);
+      pulse = int.parse(_pulseController.text);
+      _result = (systolic + (2 * diastolic) + pulse) / 3;
     });
   }
 
@@ -43,22 +49,13 @@ class _BPState extends State<BP> {
                 SizedBox(
                   height: 10,
                 ),
-                Center(
-                    child: Center(
-                  child: Text(
-                    'Grade 3 hypertension',
-                    style: TextStyle(
-                        color: ColorConstraints.secondarycolor,
-                        fontSize: MediaQuery.of(context).size.width * 0.08),
-                  ),
-                )),
                 Divider(
                   thickness: 1,
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.03),
                 Center(
                   child: Text(
-                    "Systollic: ${Systollic} mmHg",
+                    "Systollic: ${systolic} mmHg",
                     style: TextStyle(
                         fontSize: MediaQuery.of(context).size.height * 0.02,
                         fontWeight: FontWeight.bold),
@@ -68,7 +65,7 @@ class _BPState extends State<BP> {
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Center(
-                  child: Text("Diastoolic: ${Diastoolic}mmHg",
+                  child: Text("Diastoolic: ${diastolic}mmHg",
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * 0.02,
                           fontWeight: FontWeight.bold)),
@@ -77,7 +74,7 @@ class _BPState extends State<BP> {
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Center(
-                  child: Text("Pulse: ${Pulse} mmHg",
+                  child: Text("Pulse: ${diastolic} mmHg",
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * 0.02,
                           fontWeight: FontWeight.bold)),
@@ -86,37 +83,35 @@ class _BPState extends State<BP> {
                   height: MediaQuery.of(context).size.height * 0.03,
                 ),
                 Center(
-                  child: Text("Mean: 126.33Hg",
+                  child: Text("Mean: $_result Hg",
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * 0.02,
                           fontWeight: FontWeight.bold)),
                 ),
                 Container(
                   padding: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width * 0.1,
                       top: MediaQuery.of(context).size.width * 0.1),
                   child: TextField(
-                    cursorColor: ColorConstraints.blackcolor,
+                    controller: _systolicBPController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Systolic',
+                      labelText: 'Systolic BP',
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width * 0.1),
                   child: TextField(
-                    cursorColor: ColorConstraints.blackcolor,
+                    controller: _diastolicBPController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: 'Diatolic',
+                      labelText: 'Diastolic BP',
                     ),
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(
-                      right: MediaQuery.of(context).size.width * 0.1),
                   child: TextField(
-                    cursorColor: ColorConstraints.blackcolor,
+                    controller: _pulseController,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       labelText: 'Pulse',
                     ),
