@@ -21,27 +21,27 @@ class HomeDashboardScreen extends StatelessWidget {
     {
       'text': "Neo Analysis",
       'icon': FileConstraints.logo1,
-      'screen': Icons.analytics
+      'screen': AppRoutes.neoanalysis
     },
     {
       'text': "Video Vital",
       'icon': FileConstraints.logo1,
-      'screen': Icons.video_call
+      'screen': AppRoutes.videovital
     },
     {
       'text': "BMI Calculator",
       'icon': FileConstraints.logo1,
-      'screen': Icons.calculate
+      'screen': AppRoutes.bmi
     },
     {
       'text': "BP Record",
       'icon': FileConstraints.logo1,
-      'screen': Icons.bug_report
+      'screen': AppRoutes.bp
     },
     {
-      'text': "Doctor",
+      'text': "Ocr Record",
       'icon': FileConstraints.logo1,
-      'screen': Icons.domain_verification_rounded
+      'screen': AppRoutes.ocrReportScreen
     },
   ];
 

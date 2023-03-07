@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:medicalapp/Views/AI%20Models/neo_analysis.dart';
 import 'package:medicalapp/Views/Additionaltools/bmi.dart';
 import 'package:medicalapp/Views/Additionaltools/bp.dart';
+import 'package:medicalapp/Views/Additionaltools/ocr_report.dart';
 import 'package:medicalapp/Views/Auth/Login/login_screen.dart';
 import 'package:medicalapp/Views/Auth/Register/register_screen.dart';
 import 'package:medicalapp/Views/Auth/auth_home_screen.dart';
@@ -15,6 +16,7 @@ import 'package:medicalapp/Views/Patient/Appointment/appointment_screen.dart';
 import 'package:medicalapp/Views/Patient/Appointment/fix_appointment_screen.dart';
 import 'package:medicalapp/Views/Patient/My%20All%20Appointment/myappointment_detail.dart';
 import 'package:medicalapp/Views/Splash/splash_screen.dart';
+import 'package:medicalapp/Views/AI Models/video_vital.dart';
 
 class AppRoutes {
   static String splash = "/";
@@ -26,6 +28,7 @@ class AppRoutes {
   static String registerscreen = "/RegisterScreen";
   static String registerhomescreen = "/RegisterHomeScreen";
   static String neoanalysis = "/NeoAnalysis";
+  static String videovital = "/videovital";
   static String bmi = "/Bmi";
   static String bp = "/BP";
   static String appointmentscreen = "/AppointmentScreen";
@@ -35,6 +38,7 @@ class AppRoutes {
   static String myAppointmentdetaildoct = '/MyAppointmentDetailDoct';
   static String homedashboardDoctor = '/HomeDashboardDoctor';
   static String addreportscreen = '/AddReportScreen';
+  static String ocrReportScreen = '/OCRReportScreen';
 
   static List<GetPage<dynamic>> routes = [
     GetPage(
@@ -64,6 +68,10 @@ class AppRoutes {
     GetPage(
       name: neoanalysis,
       page: () => NeoAnalysis(),
+    ),
+    GetPage(
+      name: videovital,
+      page: () => VideoVitalScreen(),
     ),
     GetPage(
       name: bmi,
@@ -100,6 +108,10 @@ class AppRoutes {
     GetPage(
       name: addreportscreen,
       page: () => AddReportScreen(),
+    ),
+    GetPage(
+      name: ocrReportScreen,
+      page: () => OCRReportScreen(),
     ),
   ];
 }
