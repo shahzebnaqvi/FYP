@@ -36,10 +36,10 @@ class HomeDashboardDoctor extends StatelessWidget {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: ListView(
+        body: Column(
           children: [
             SizedBox(
-              height: 40.sp,
+              height: 60.sp,
             ),
             Center(
               child: Container(
@@ -83,174 +83,208 @@ class HomeDashboardDoctor extends StatelessWidget {
             SizedBox(
               height: 40.sp,
             ),
-            Container(
-              constraints: BoxConstraints(
-                minHeight: MediaQuery.of(context).size.height * 0.8,
-                maxHeight: 10000,
-              ),
-              decoration: BoxDecoration(
-                color: ColorConstraints.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20.sp),
-                  topRight: Radius.circular(20.sp),
-                ),
-              ),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 20.sp,
-                  ),
-                  HeadingRow(
-                      btntext: "View All",
-                      ontapaction: () {
-                        Get.to(ViewAllAppointmentScreen());
-                      },
-                      headingtext: "Next Appointment"),
-                  StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection('appointments')
-                          .where('doctor_email',
-                              isEqualTo: '${BaseStorage.storage.read("email")}')
-                          .limit(1)
-                          .snapshots(),
-                      builder: (BuildContext context,
-                          AsyncSnapshot<QuerySnapshot> snapshot) {
-                        if (snapshot.hasError) {
-                          return Text("Error");
-                        }
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Center(child: Text(""));
-                        }
-                        return ListView(
-                          physics: NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                          children: snapshot.data!.docs
-                              .map((DocumentSnapshot document) {
-                            Map<String, dynamic> data =
-                                document.data()! as Map<String, dynamic>;
-                            return InkWell(
-                                onTap: () {
-                                  Get.toNamed(AppRoutes.myAppointmentdetaildoct,
-                                      arguments: [
-                                        {
-                                          "imagelink": '${data['profile']}',
-                                          "doctor_name":
-                                              '${data['doctor_name']}',
-                                          "doctor_email":
-                                              '${data['doctor_email']}',
-                                          "patient_email":
-                                              '${data['patient_email']}',
-                                          "patient_name":
-                                              '${data['patient_name']}',
-                                          "appointment_time":
-                                              '${data['appointment_time']}',
-                                          "date":
-                                              '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
-                                        }
-                                      ]);
-                                },
-                                child: DoctorWidgetAppointmentsHome(
-                                    docttime: "${data['appointment_time']}",
-                                    imagelink: "${data['patient_profile']}",
-                                    doctname: "${data['patient_name']}",
-                                    doctcat: '${data['doctor_cat']}',
-                                    doctdate:
-                                        "${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}",
-                                    OnTapbutton: () {
-                                      Get.toNamed(
-                                          AppRoutes.myAppointmentdetaildoct,
-                                          arguments: [
-                                            {
-                                              "imagelink": '${data['profile']}',
-                                              "doctor_name":
-                                                  '${data['doctor_name']}',
-                                              "doctor_email":
-                                                  '${data['doctor_email']}',
-                                              "patient_email":
-                                                  '${data['patient_email']}',
-                                              "patient_name":
-                                                  '${data['patient_name']}',
-                                              "appointment_time":
-                                                  '${data['appointment_time']}',
-                                              "date":
-                                                  '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
-                                            }
-                                          ]);
-                                    }));
-                          }).toList(),
-                        );
-                      }),
-                  HeadingRowhead(
-                    headingtext: "Others",
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.bmi,
-                                heading: "BMI",
-                                OnTapbutton: () {
-                                  Get.to(() => Bmi());
-                                }),
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.calories,
-                                heading: "Calories",
-                                OnTapbutton: () {
-                                  Get.to(() => BP());
-                                }),
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.report,
-                                heading: "Report",
-                                OnTapbutton: () {
-                                  Get.to(() => ViewAllReportsScreen());
-                                }),
-                          ])),
-                  HeadingRowhead(
-                    headingtext: "AI Model",
-                  ),
-                  Container(
-                      padding: EdgeInsets.only(top: 10.sp, bottom: 4.sp),
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.videovitals,
-                                heading: "Video Vitals",
-                                OnTapbutton: () {
-                                  Get.to(() => VideoVitalScreen());
-                                }),
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.neoanalysis1,
-                                heading: "Neo Analysis",
-                                OnTapbutton: () {
-                                  Get.to(() => NeoAnalysis());
-                                }),
-                            DoctorHomeWidget(
-                                imagelink: FileConstraints.ocr,
-                                heading: "OCR Report",
-                                OnTapbutton: () {
-                                  Get.to(() => OCRReportScreen());
-                                }),
-                          ])),
-                  SizedBox(
-                    height: 10.sp,
-                  ),
-                  Custombuttonbackred(
-                    ontapaction: () {
-                      BaseStorage.storage.erase();
+            Expanded(
+              child: Container(
+                // constraints: BoxConstraints(
+                //   minHeight: MediaQuery.of(context).size.height * 0.3,
+                //   maxHeight: 10000,
+                // ),
+                width: MediaQuery.of(context).size.width,
 
-                      Get.offAllNamed(
-                        AppRoutes.doctororpatient,
-                      );
-                    },
-                    buttontext: "Logout",
-                  )
-                ],
+                decoration: BoxDecoration(
+                  color: ColorConstraints.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.sp),
+                    topRight: Radius.circular(20.sp),
+                  ),
+                ),
+                child: Center(
+                  child: Container(
+                    child: CustomScrollView(
+                      slivers: [
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 20.sp,
+                              ),
+                              HeadingRow(
+                                  btntext: "View All",
+                                  ontapaction: () {
+                                    Get.to(ViewAllAppointmentScreen());
+                                  },
+                                  headingtext: "Next Appointment"),
+                              StreamBuilder<QuerySnapshot>(
+                                  stream: FirebaseFirestore.instance
+                                      .collection('appointments')
+                                      .where('doctor_email',
+                                          isEqualTo:
+                                              '${BaseStorage.storage.read("email")}')
+                                      .limit(1)
+                                      .snapshots(),
+                                  builder: (BuildContext context,
+                                      AsyncSnapshot<QuerySnapshot> snapshot) {
+                                    if (snapshot.hasError) {
+                                      return Text("Error");
+                                    }
+                                    if (snapshot.connectionState ==
+                                        ConnectionState.waiting) {
+                                      return Center(child: Text(""));
+                                    }
+                                    return Column(
+                                      // physics: NeverScrollableScrollPhysics(),
+                                      // shrinkWrap: true,
+                                      children: snapshot.data!.docs
+                                          .map((DocumentSnapshot document) {
+                                        Map<String, dynamic> data = document
+                                            .data()! as Map<String, dynamic>;
+                                        return InkWell(
+                                            onTap: () {
+                                              Get.toNamed(
+                                                  AppRoutes
+                                                      .myAppointmentdetaildoct,
+                                                  arguments: [
+                                                    {
+                                                      "imagelink":
+                                                          '${data['profile']}',
+                                                      "doctor_name":
+                                                          '${data['doctor_name']}',
+                                                      "doctor_email":
+                                                          '${data['doctor_email']}',
+                                                      "patient_email":
+                                                          '${data['patient_email']}',
+                                                      "patient_name":
+                                                          '${data['patient_name']}',
+                                                      "appointment_time":
+                                                          '${data['appointment_time']}',
+                                                      "date":
+                                                          '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
+                                                    }
+                                                  ]);
+                                            },
+                                            child: DoctorWidgetAppointmentsHome(
+                                                docttime:
+                                                    "${data['appointment_time']}",
+                                                imagelink:
+                                                    "${data['patient_profile']}",
+                                                doctname:
+                                                    "${data['patient_name']}",
+                                                doctcat:
+                                                    '${data['doctor_cat']}',
+                                                doctdate:
+                                                    "${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}",
+                                                OnTapbutton: () {
+                                                  Get.toNamed(
+                                                      AppRoutes
+                                                          .myAppointmentdetaildoct,
+                                                      arguments: [
+                                                        {
+                                                          "imagelink":
+                                                              '${data['profile']}',
+                                                          "doctor_name":
+                                                              '${data['doctor_name']}',
+                                                          "doctor_email":
+                                                              '${data['doctor_email']}',
+                                                          "patient_email":
+                                                              '${data['patient_email']}',
+                                                          "patient_name":
+                                                              '${data['patient_name']}',
+                                                          "appointment_time":
+                                                              '${data['appointment_time']}',
+                                                          "date":
+                                                              '${DateFormat('d MMM yyyy').format(DateTime.parse(data['appointment_date'].toDate().toString()))}',
+                                                        }
+                                                      ]);
+                                                }));
+                                      }).toList(),
+                                    );
+                                  }),
+                              HeadingRowhead(
+                                headingtext: "Others",
+                              ),
+                              Container(
+                                  padding:
+                                      EdgeInsets.only(top: 10.sp, bottom: 4.sp),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        DoctorHomeWidget(
+                                            imagelink: FileConstraints.bmi,
+                                            heading: "BMI",
+                                            OnTapbutton: () {
+                                              Get.to(() => Bmi());
+                                            }),
+                                        DoctorHomeWidget(
+                                            imagelink: FileConstraints.calories,
+                                            heading: "Calories",
+                                            OnTapbutton: () {
+                                              Get.to(() => BP());
+                                            }),
+                                        DoctorHomeWidget(
+                                            imagelink: FileConstraints.report,
+                                            heading: "Report",
+                                            OnTapbutton: () {
+                                              Get.to(
+                                                  () => ViewAllReportsScreen());
+                                            }),
+                                      ])),
+                              HeadingRowhead(
+                                headingtext: "AI Model",
+                              ),
+                              Container(
+                                  padding:
+                                      EdgeInsets.only(top: 10.sp, bottom: 4.sp),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        DoctorHomeWidget(
+                                            imagelink:
+                                                FileConstraints.videovitals,
+                                            heading: "Video Vitals",
+                                            OnTapbutton: () {
+                                              Get.to(() => VideoVitalScreen());
+                                            }),
+                                        DoctorHomeWidget(
+                                            imagelink:
+                                                FileConstraints.neoanalysis1,
+                                            heading: "Neo Analysis",
+                                            OnTapbutton: () {
+                                              Get.to(() => NeoAnalysis());
+                                            }),
+                                        DoctorHomeWidget(
+                                            imagelink: FileConstraints.ocr,
+                                            heading: "OCR Report",
+                                            OnTapbutton: () {
+                                              Get.to(() => OCRReportScreen());
+                                            }),
+                                      ])),
+                              SizedBox(
+                                height: 10.sp,
+                              ),
+                              Custombuttonbackred(
+                                ontapaction: () {
+                                  BaseStorage.storage.erase();
+
+                                  Get.offAllNamed(
+                                    AppRoutes.doctororpatient,
+                                  );
+                                },
+                                buttontext: "Logout",
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
           ],
