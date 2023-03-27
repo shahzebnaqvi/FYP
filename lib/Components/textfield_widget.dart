@@ -37,6 +37,46 @@ class TextFieldWidget extends StatelessWidget {
   }
 }
 
+class TextFieldWidgetemail extends StatelessWidget {
+  final controllertextfield;
+  final hinttextfield;
+  final validationfunction;
+  final onTapfunc;
+  final onChangedfunc;
+  const TextFieldWidgetemail(
+      {super.key,
+      required this.controllertextfield,
+      required this.hinttextfield,
+      required this.validationfunction,
+      required this.onChangedfunc,
+      required this.onTapfunc});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+        onTap: onTapfunc,
+        onChanged: onChangedfunc,
+        validator: (value) => validationfunction(value),
+        controller: controllertextfield,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(45),
+        ],
+        decoration: InputDecoration(
+          hintText: "$hinttextfield",
+          contentPadding:
+              EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(width: 2, color: ColorConstraints.bordercolor),
+          ),
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(width: 2, color: ColorConstraints.bordercolor),
+          ),
+        ));
+  }
+}
+
 class TextFieldWidgetobs extends StatelessWidget {
   final controllertextfield;
   final hinttextfield;
@@ -54,6 +94,56 @@ class TextFieldWidgetobs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        validator: (value) => validationfunction(value),
+        controller: controllertextfield,
+        inputFormatters: [
+          LengthLimitingTextInputFormatter(45),
+        ],
+        obscureText: isHidden,
+        decoration: InputDecoration(
+          isDense: true,
+          suffixIcon: InkWell(
+            onTap: togglePasswordView,
+            child: Icon(
+              color: ColorConstraints.bordercolor,
+              isHidden ? Icons.visibility : Icons.visibility_off,
+            ),
+          ),
+          hintText: "$hinttextfield",
+          contentPadding:
+              EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
+          focusedBorder: OutlineInputBorder(
+            borderSide:
+                BorderSide(width: 2, color: ColorConstraints.bordercolor),
+          ),
+          border: OutlineInputBorder(
+            borderSide:
+                BorderSide(width: 2, color: ColorConstraints.bordercolor),
+          ),
+        ));
+  }
+}
+
+class TextFieldWidgetobspass extends StatelessWidget {
+  final controllertextfield;
+  final hinttextfield;
+  final isHidden;
+  final togglePasswordView;
+  final validationfunction;
+  final ontapfunc;
+  const TextFieldWidgetobspass(
+      {super.key,
+      required this.controllertextfield,
+      required this.hinttextfield,
+      required this.isHidden,
+      required this.togglePasswordView,
+      this.validationfunction,
+      required this.ontapfunc});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+        onTap: ontapfunc,
         validator: (value) => validationfunction(value),
         controller: controllertextfield,
         inputFormatters: [

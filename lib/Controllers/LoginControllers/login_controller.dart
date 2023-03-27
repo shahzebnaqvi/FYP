@@ -4,12 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get.dart';
 import 'package:medicalapp/Controllers/main_controller.dart';
 import 'package:medicalapp/Services/constant_storage.dart';
 import 'package:medicalapp/Views/Doctor/Home%20Dashboard/home_dashboard.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_dashboard_screen.dart';
 import 'package:medicalapp/Views/Patient/Home%20Dashboard/home_screen.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'package:rive/rive.dart';
 
 class LoginController extends GetxController with MainController {
   TextEditingController semail = TextEditingController();
@@ -99,5 +101,69 @@ class LoginController extends GetxController with MainController {
     }
     loading = false;
     update();
+  }
+
+  late String animationURL;
+  Artboard? teddyArtboard;
+  SMITrigger? successTrigger, failTrigger;
+  SMIBool? isHandsUp, isChecking;
+  SMINumber? numLook;
+
+  StateMachineController? stateMachineController;
+  @override
+  void onInit() {
+    // TODO: implement initState
+    super.onInit();
+    animationURL = defaultTargetPlatform == TargetPlatform.android ||
+            defaultTargetPlatform == TargetPlatform.iOS
+        ? 'assets/animations/login.riv'
+        : 'animations/login.riv';
+    rootBundle.load(animationURL).then(
+      (data) {
+        final file = RiveFile.import(data);
+        final artboard = file.mainArtboard;
+        stateMachineController =
+            StateMachineController.fromArtboard(artboard, "Login Machine");
+        if (stateMachineController != null) {
+          artboard.addController(stateMachineController!);
+
+          stateMachineController!.inputs.forEach((e) {
+            debugPrint(e.runtimeType.toString());
+            debugPrint("name${e.name}End");
+          });
+
+          stateMachineController!.inputs.forEach((element) {
+            if (element.name == "trigSuccess") {
+              successTrigger = element as SMITrigger;
+            } else if (element.name == "trigFail") {
+              failTrigger = element as SMITrigger;
+            } else if (element.name == "isHandsUp") {
+              isHandsUp = element as SMIBool;
+            } else if (element.name == "isChecking") {
+              isChecking = element as SMIBool;
+            } else if (element.name == "numLook") {
+              numLook = element as SMINumber;
+            }
+          });
+        }
+
+        teddyArtboard = artboard;
+        update();
+      },
+    );
+  }
+
+  void handsOnTheEyes() {
+    isHandsUp?.change(true);
+  }
+
+  void lookOnTheTextField() {
+    isHandsUp?.change(false);
+    isChecking?.change(true);
+    numLook?.change(0);
+  }
+
+  void moveEyeBalls(val) {
+    numLook?.change(val.length.toDouble());
   }
 }
