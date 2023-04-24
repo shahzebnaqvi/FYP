@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDlZ4ZmCw6chfGFCXboTwhIj936xPkaOPY',
-    appId: '1:1036722190154:android:1711559c43a09757a973b3',
+    appId: '1:1036722190154:android:8ce4c725735a13c1a973b3',
     messagingSenderId: '1036722190154',
     projectId: 'sehatgah-e3a20',
     storageBucket: 'sehatgah-e3a20.appspot.com',
@@ -63,21 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD8VuSXDwZVyjGt-YO8qGFPeMBN8QxIVAs',
-    appId: '1:1036722190154:ios:b145ed2cbbd2cf9ba973b3',
+    appId: '1:1036722190154:ios:892bc5b226143db0a973b3',
     messagingSenderId: '1036722190154',
     projectId: 'sehatgah-e3a20',
     storageBucket: 'sehatgah-e3a20.appspot.com',
-    iosClientId: '1036722190154-2f10342m1fv3mrmjurb3e8bedmmq2vhs.apps.googleusercontent.com',
-    iosBundleId: 'com.example.medicalapp',
+    iosClientId: '1036722190154-puj323o0v265raimnp61he5n4v0lovl0.apps.googleusercontent.com',
+    iosBundleId: 'com.medicalapp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyD8VuSXDwZVyjGt-YO8qGFPeMBN8QxIVAs',
-    appId: '1:1036722190154:ios:b145ed2cbbd2cf9ba973b3',
+    appId: '1:1036722190154:ios:892bc5b226143db0a973b3',
     messagingSenderId: '1036722190154',
     projectId: 'sehatgah-e3a20',
     storageBucket: 'sehatgah-e3a20.appspot.com',
-    iosClientId: '1036722190154-2f10342m1fv3mrmjurb3e8bedmmq2vhs.apps.googleusercontent.com',
-    iosBundleId: 'com.example.medicalapp',
+    iosClientId: '1036722190154-puj323o0v265raimnp61he5n4v0lovl0.apps.googleusercontent.com',
+    iosBundleId: 'com.medicalapp',
   );
 }

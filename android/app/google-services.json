@@ -29,6 +29,49 @@
             {
               "client_id": "1036722190154-iml047rp0u9ufc71c3quroc0d67kr95h.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1036722190154-2f10342m1fv3mrmjurb3e8bedmmq2vhs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.medicalapp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1036722190154:android:8ce4c725735a13c1a973b3",
+        "android_client_info": {
+          "package_name": "com.medicalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1036722190154-iml047rp0u9ufc71c3quroc0d67kr95h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlZ4ZmCw6chfGFCXboTwhIj936xPkaOPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1036722190154-iml047rp0u9ufc71c3quroc0d67kr95h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1036722190154-2f10342m1fv3mrmjurb3e8bedmmq2vhs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.medicalapp"
+              }
             }
           ]
         }

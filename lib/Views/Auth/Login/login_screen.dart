@@ -8,7 +8,7 @@ import 'package:medicalapp/Components/labels_widget.dart';
 import 'package:medicalapp/Components/textfield_widget.dart';
 import 'package:medicalapp/Controllers/LoginControllers/login_controller.dart';
 import 'package:medicalapp/Utils/color_constraints.dart';
-import 'package:rive/rive.dart';
+// import 'package:rive/rive.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
@@ -51,15 +51,15 @@ class LoginScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      if (logincontroller.teddyArtboard != null)
-                        SizedBox(
-                          width: 200.sp,
-                          height: 200.sp,
-                          child: Rive(
-                            artboard: logincontroller.teddyArtboard!,
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ),
+                      // if (logincontroller.teddyArtboard != null)
+                      //   SizedBox(
+                      //     width: 200.sp,
+                      //     height: 200.sp,
+                      //     child: Rive(
+                      //       artboard: logincontroller.teddyArtboard!,
+                      //       fit: BoxFit.fitWidth,
+                      //     ),
+                      //   ),
                       // Container(
                       //   margin: EdgeInsets.only(
                       //       top: 10.sp, bottom: 20.sp, right: 4.sp, left: 4.sp),
@@ -91,21 +91,23 @@ class LoginScreen extends StatelessWidget {
                                   labeltext: "Email*",
                                 ),
                                 TextFieldWidgetemail(
-                                    validationfunction: (validate_value) =>
-                                        logincontroller
-                                            .validateEmail(validate_value),
-                                    controllertextfield: logincontroller.semail,
-                                    hinttextfield: "Enter your email",
-                                    onTapfunc:
-                                        logincontroller.lookOnTheTextField,
-                                    onChangedfunc:
-                                        logincontroller.moveEyeBalls),
+                                  validationfunction: (validate_value) =>
+                                      logincontroller
+                                          .validateEmail(validate_value),
+                                  controllertextfield: logincontroller.semail,
+                                  hinttextfield: "Enter your email",
+                                  onTapfunc: () {},
+                                  // logincontroller.lookOnTheTextField,
+                                  onChangedfunc: (a) {},
+                                  // logincontroller.moveEyeBalls
+                                ),
                                 LabelWidget(
                                   labeltext: "Password*",
                                 ),
                                 Obx(
                                   () => TextFieldWidgetobspass(
-                                      ontapfunc: logincontroller.handsOnTheEyes,
+                                      ontapfunc: () {},
+                                      // logincontroller.handsOnTheEyes,
                                       validationfunction: (validate_value) =>
                                           logincontroller
                                               .validateNull(validate_value),

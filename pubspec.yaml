@@ -58,7 +58,7 @@ dependencies:
   flutter_blue: ^0.8.0
   ml_kit_ocr: ^0.0.3+1
   image_picker: ^0.8.6+4
-  rive: ^0.10.3
+  # rive: ^0.10.3
   
 dev_dependencies:
   flutter_test:
